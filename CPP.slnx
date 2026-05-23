@@ -4,6 +4,6 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="Classwork/Classwork.vcxproj" Id="c039399b-badb-4b92-b081-2b1abd4a1012" />
-  <Project Path="Homeowrk_2/Homeowrk_2.vcxproj" Id="5e40d4b1-66a8-4cd1-9cb4-905252d57cb6" />
   <Project Path="Homework_1/Homework_1.vcxproj" Id="0922dfe4-b68e-45e2-8ed9-567b2712db4d" />
+  <Project Path="Homework_2/Homework_2.vcxproj" Id="5e40d4b1-66a8-4cd1-9cb4-905252d57cb6" />
 </Solution>
