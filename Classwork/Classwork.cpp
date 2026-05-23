@@ -50,8 +50,9 @@ int main()
 		SetColor(White, Black);
 		cout << " Mo  Tu  We  Th  Fr";
 		SetColor(White, Red);
-		cout << "  Sa  Su " << endl;
+		cout << "  Sa  Su ";
 		SetColor(Black, White);
+		cout << endl;
 		for (size_t i = 0; i < start_day; i++) { cout << "    "; }
 		for (size_t i = 1; i <= number_of_days; i++)
 		{
@@ -60,11 +61,11 @@ int main()
 			}
 			cout << setw(3) << i << " ";
 			SetColor(Black, White);
-			if ((i + start_day) % 7 == 0) {
+			if ((i + start_day) % 7 == 0 && i != number_of_days) {
 				cout << endl;
 			}
 		}
-		start_day = (number_of_days - start_day - 1) % 7;
+		start_day = (number_of_days + start_day) % 7;
 		cout << endl;
 		cout << endl;
 	}
