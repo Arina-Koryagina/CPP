@@ -1,5 +1,6 @@
 #include<iostream>
 #include<Windows.h>
+#include <cmath>  // https://www.w3schools.com/cpp/cpp_ref_math.asp
 
 using namespace std;
 
@@ -55,19 +56,82 @@ int main()
 	// Для розрахунків враховувати високосні роки, а також коректне число днів у
 	// місяцях (березень — 31, вересень — 30, лютий невисокосного року — 28 і т.д.).
 
-	//int day_1, month_1, year_1;
-	//cout << "Enter the first date: ";
-	//cin >> day_1 >> month_1 >> year_1;
-	//int day_2, month_2, year_2;
-	//cout << "Enter the second date: ";
-	//cin >> day_2 >> month_2 >> year_2;
-	//int days, months, years;
+	int d1, m1, y1;
+	int d2, m2, y2;
+	cout << "Enter first date (dd mm yyyy): ";
+	cin >> d1 >> m1 >> y1;
+	cout << "Enter second date (dd mm yyyy): ";
+	cin >> d2 >> m2 >> y2;
 
-	//years = year_2 - year_1;
-	//if (years < 0) { years = -years; }
-	//
+	int total1 = 0, total2 = 0, number_of_days;
+	for (int y = 0; y < y1; y++)
+	{
+		if ((y % 400 == 0) || (y % 4 == 0 && y % 100 != 0))
+			total1 += 366;
+		else
+			total1 += 365;
+	}
+	for (int month = 1; month < m1; month++)
+	{
+		switch (month)
+		{
+		case 1: number_of_days = 31; break;
+		case 2:
+			if ((y1 % 400 == 0) || (y1 % 4 == 0 && y1 % 100 != 0))
+				number_of_days = 29;
+			else
+				number_of_days = 28;
+			break;
+		case 3: number_of_days = 31; break;
+		case 4: number_of_days = 30; break;
+		case 5: number_of_days = 31; break;
+		case 6: number_of_days = 30; break;
+		case 7: number_of_days = 31; break;
+		case 8: number_of_days = 31; break;
+		case 9: number_of_days = 30; break;
+		case 10: number_of_days = 31; break;
+		case 11: number_of_days = 30; break;
+		case 12: number_of_days = 31; break;
+		}
+		total1 += number_of_days;
+	}
+	total1 += d1;
 
-	//cout << "The amount of days between two dates: " << days << endl;
+	for (int y = 0; y < y2; y++)
+	{
+		if ((y % 400 == 0) || (y % 4 == 0 && y % 100 != 0))
+			total2 += 366;
+		else
+			total2 += 365;
+	}
+	for (int month = 1; month < m2; month++)
+	{
+		switch (month)
+		{
+		case 1: number_of_days = 31; break;
+		case 2:
+			if ((y2 % 400 == 0) || (y2 % 4 == 0 && y2 % 100 != 0))
+				number_of_days = 29;
+			else
+				number_of_days = 28;
+			break;
+		case 3: number_of_days = 31; break;
+		case 4: number_of_days = 30; break;
+		case 5: number_of_days = 31; break;
+		case 6: number_of_days = 30; break;
+		case 7: number_of_days = 31; break;
+		case 8: number_of_days = 31; break;
+		case 9: number_of_days = 30; break;
+		case 10: number_of_days = 31; break;
+		case 11: number_of_days = 30; break;
+		case 12: number_of_days = 31; break;
+		}
+		total2 += number_of_days;
+	}
+	total2 += d2;
+	int days = abs(total2 - total1);
+
+	cout << "Days between dates: " << days << endl;
 
 
 	//  III
@@ -77,41 +141,43 @@ int main()
 	// продажів для трьох менеджерів. Визначити їхню зарплату, визначити найкращого
 	// менеджера, нарахувати йому премію 200$, вивести підсумки на екран.
 
-	int fst, snd, trd, best;
+	int fst, snd, trd;
 	cout << "Enter the sales for the first, second, and third managers: ";
 	cin >> fst >> snd >> trd;
-	float fst_s, snd_s, trd_s, total;
-	//char best;
+	double fst_s, snd_s, trd_s, total;
 
-	if (fst < 500) { fst_s = 200 + fst * 0.03; }
-	else if (fst < 1000) { fst_s = 200 + fst * 0.05; }
-	else { fst_s = 200 + fst * 0.08; }
-	if (snd < 500) { snd_s = 200 + snd * 0.03; }
-	else if (snd < 1000) { snd_s = 200 + snd * 0.05; }
-	else { snd_s = 200 + snd * 0.08; }
-	if (trd < 500) { trd_s = 200 + trd * 0.03; }
-	else if (trd < 1000) { trd_s = 200 + trd * 0.05; }
-	else { trd_s = 200 + trd * 0.08; }
-	if (fst > snd && fst > trd) {
-		//best = "first";
-		best = 1;
-		total = fst_s + 200;
-	}
-	else if (snd > trd) {
-		//best = "second";
-		best = 2;
-		total = snd_s + 200;
-	}
-	else {
-		//best = "third";
-		best = 3;
-		total = trd_s + 200;
-	}
+	if (fst < 500) { fst_s = 200. + fst * 0.03; }
+	else if (fst < 1000) { fst_s = 200. + fst * 0.05; }
+	else { fst_s = 200. + fst * 0.08; }
+	if (snd < 500) { snd_s = 200. + snd * 0.03; }
+	else if (snd < 1000) { snd_s = 200. + snd * 0.05; }
+	else { snd_s = 200. + snd * 0.08; }
+	if (trd < 500) { trd_s = 200. + trd * 0.03; }
+	else if (trd < 1000) { trd_s = 200. + trd * 0.05; }
+	else { trd_s = 200. + trd * 0.08; }
 
 	cout << "First manager's salary: " << fst_s << "$" << endl;
 	cout << "Second manager's salary: " << snd_s << "$" << endl;
 	cout << "Third manager's salary: " << trd_s << "$" << endl;
-	cout << "Best manager is the " << best << ". Their total: " << total << "$" << endl;
+
+	if (fst > snd && fst > trd) {
+		total = fst_s + 200;
+
+		cout << "Best manager is the first. Their total: " << total << "$" << endl;
+	}
+	else if (snd > trd) {
+		total = snd_s + 200;
+
+		cout << "Best manager is the second. Their total: " << total << "$" << endl;
+	}
+	else if (trd > snd) {
+		total = trd_s + 200;
+
+		cout << "Best manager is the third. Their total: " << total << "$" << endl;
+	}
+	else {
+		cout << "Everyone has an equal pay.";
+	}
 
 
 	return 0;
