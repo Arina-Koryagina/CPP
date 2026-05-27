@@ -22,26 +22,28 @@ int main()
 	SetColor(Black, White);
 	system("cls");
 
-	int start_day = 3, number_of_days;
+	int year;
+	cout << "Choose year of the calendar: ";
+	cin >> year;
+	int start_day;
+	cout << "Choose day the year starts (0 - Mo, 1 - Tu..): ";
+	cin >> start_day;
+
+	int number_of_days;
 	for (size_t month = 1; month <= 12; month++)
 	{
 		switch (month) {
-		case 1: number_of_days = 31; break;
-		case 2: number_of_days = 28; break;
-		case 3: number_of_days = 31; break;
-		case 4: number_of_days = 30; break;
-		case 5: number_of_days = 31; break;
-		case 6: number_of_days = 30; break;
-		case 7: number_of_days = 31; break;
-		case 8: number_of_days = 31; break;
-		case 9: number_of_days = 30; break;
-		case 10: number_of_days = 31; break;
-		case 11: number_of_days = 30; break;
-		case 12: number_of_days = 31; break;
+		case 2: 
+			((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) ? number_of_days = 29 : number_of_days = 28;
+			break;
+		case 4: case 6: case 9: case 11: number_of_days = 30; break;
+		default:
+			number_of_days = 31;
+			break;
 		}
 		cout << setw(3) << month;
 		SetColor(Red, White);
-		cout << setw(25) << "2026 " << endl;
+		cout << setw(25) << year << endl;
 		SetColor(White, Black);
 		cout << " Mo  Tu  We  Th  Fr";
 		SetColor(White, Red);
