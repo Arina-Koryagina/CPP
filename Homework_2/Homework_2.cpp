@@ -75,23 +75,16 @@ int main()
 	{
 		switch (month)
 		{
-		case 1: number_of_days = 31; break;
 		case 2:
-			if ((y1 % 400 == 0) || (y1 % 4 == 0 && y1 % 100 != 0))
+			if ((y2 % 400 == 0) || (y2 % 4 == 0 && y2 % 100 != 0))
 				number_of_days = 29;
 			else
 				number_of_days = 28;
 			break;
-		case 3: number_of_days = 31; break;
-		case 4: number_of_days = 30; break;
-		case 5: number_of_days = 31; break;
-		case 6: number_of_days = 30; break;
-		case 7: number_of_days = 31; break;
-		case 8: number_of_days = 31; break;
-		case 9: number_of_days = 30; break;
-		case 10: number_of_days = 31; break;
-		case 11: number_of_days = 30; break;
-		case 12: number_of_days = 31; break;
+		case 4: case 6: case 9: case 11: number_of_days = 30; break;
+		default:
+			number_of_days = 31;
+			break;
 		}
 		total1 += number_of_days;
 	}
@@ -108,23 +101,16 @@ int main()
 	{
 		switch (month)
 		{
-		case 1: number_of_days = 31; break;
 		case 2:
 			if ((y2 % 400 == 0) || (y2 % 4 == 0 && y2 % 100 != 0))
 				number_of_days = 29;
 			else
 				number_of_days = 28;
 			break;
-		case 3: number_of_days = 31; break;
-		case 4: number_of_days = 30; break;
-		case 5: number_of_days = 31; break;
-		case 6: number_of_days = 30; break;
-		case 7: number_of_days = 31; break;
-		case 8: number_of_days = 31; break;
-		case 9: number_of_days = 30; break;
-		case 10: number_of_days = 31; break;
-		case 11: number_of_days = 30; break;
-		case 12: number_of_days = 31; break;
+		case 4: case 6: case 9: case 11: number_of_days = 30; break;
+		default:
+			number_of_days = 31;
+			break;
 		}
 		total2 += number_of_days;
 	}
