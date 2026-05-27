@@ -4,16 +4,16 @@
 
 using namespace std;
 
-enum Color
-{
-	Black = 0, Blue = 1, Green = 2, Cyan = 3, Red = 4, Magenta = 5, Brown = 6, LightGray = 7, DarkGray = 8,
-	LightBlue = 9, LightGreen = 10, LightCyan = 11, LightRed = 12, LightMagenta = 13, Yellow = 14, White = 15
-};
-
-void SetColor(int text, int background)
-{
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)((background << 4) | text));
-}
+//enum Color
+//{
+//	Black = 0, Blue = 1, Green = 2, Cyan = 3, Red = 4, Magenta = 5, Brown = 6, LightGray = 7, DarkGray = 8,
+//	LightBlue = 9, LightGreen = 10, LightCyan = 11, LightRed = 12, LightMagenta = 13, Yellow = 14, White = 15
+//};
+//
+//void SetColor(int text, int background)
+//{
+//	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)((background << 4) | text));
+//}
 
 int main()
 {
@@ -22,12 +22,101 @@ int main()
 	/*SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);*/
 	/*cout.setf(ios::boolalpha);*/
-	SetColor(Black, White);
-	system("cls");
+	/*SetColor(Black, White);
+	system("cls");*/
 
-	// 22/05/2026
+	// 25/05/2026 -- Lesson 4
 
-	int start_day = 3, number_of_days;
+	int fives = 0, mark, n1=0, n2=0, n3=0;
+	srand(time(0));
+	for (size_t i = 0; i < 18; i++)
+	{
+		cout << "Student " << setw(2) << i+1 << " | ";
+		int n = 0;
+		for (size_t i = 0; i < 3; i++)
+		{
+			mark = rand() % 5 + 1;
+			if (mark == 5) { fives++; }
+			else if (mark == 3) { n++; }
+			else if (mark == 2) {
+				switch (i)
+				{
+				case 0: n1++; break;
+				case 1: n2++; break;
+				case 2: n3++; break;
+				default:
+					break;
+				}
+			}
+			cout << mark << " ";
+		}
+		cout << " |  " << n << endl;
+	}
+	cout << "------" << endl;
+	cout << n1 << " " << n2 << " " << n3 << " - total of twos" << endl;
+	cout << "Total of fives: " << fives << endl;
+
+	/*int num;
+	cout << "Enter the number: ";
+	cin >> num;
+
+	int sum = 0, amount = 0, product = 1, sum2 = 0, sum3 = 0, first = 0, last = num;
+	while (num != 0) {
+		sum += num % 10;
+		sum2 += pow(num % 10, 2);
+		sum3 += pow(num % 10, 3);
+		product *= num % 10;
+		if (num < 10) {
+			first = num;
+			(last > 9) ? last %= 10 : last = 0;
+		}
+		num /= 10;
+		amount++;
+	}
+	cout << "1. Sum of its digits: " << sum << endl;
+	cout << "2. Amount of its digits: " << amount << endl;
+	cout << "3. Product of its digits: " << product << endl;
+	cout << "4. Mean of its digits: " << float(sum) / amount << endl;
+	cout << "5. Sum of squares of its digits: " << sum2 << endl;
+	cout << "6. Sum of cubes of its digits: " << sum3 << endl;
+	cout << "7. First digit: " << first << endl;
+	cout << "8. Sum of the first and the last digit: " << first+last << endl;*/
+
+
+	/*int n = 0, sum = 0, i = 0;
+	do {
+		cout << "Number: ";
+		cin >> n;
+		sum += n;
+		if (i == 9) {
+			break;
+		}
+		else {
+			i++;
+		}
+	} while (n != 0);
+	cout << "Sum: " << sum << endl;*/
+
+	//int n=0, sum=0;
+	//do {
+	//	cout << "Number: ";
+	//	cin >> n;
+	//	sum += n;
+	//} while (n != 0);
+	///*cout << "Number: ";
+	//cin >> n;
+	//sum += n;
+	//while (n != 0) {
+	//	cout << "Number: ";
+	//	cin >> n;
+	//	sum += n;
+	//}*/
+	//cout << "Sum: " << sum << endl;
+
+
+	// 22/05/2026 -- Lesson 3
+
+	/*int start_day = 3, number_of_days;
 	for (size_t month = 1; month <= 12; month++)
 	{
 		switch (month) {
@@ -68,7 +157,7 @@ int main()
 		start_day = (number_of_days + start_day) % 7;
 		cout << endl;
 		cout << endl;
-	}
+	}*/
 
 	//int start_day = 4;
 	//string month = "  May";
@@ -222,7 +311,7 @@ int main()
 	max = (a > b) ? a : b;
 	max = (a > b && a > c) ? a : (b > c) ? b : c;*/
 
-	// 18/05/2026
+	// 18/05/2026 -- Lesson 2
 	
 	/*char fg, bg;
 	cout << "Black, Blue, Green, Cyan, Red, Magenta, Brown, LightGray, DarkGray,"
@@ -435,7 +524,7 @@ int main()
 	
 
 
-	// 15/05/2026
+	// 15/05/2026 -- Lesson 1
 	
 	//cout << "Hello \"World!\"\n" << endl;
 	//cout << "\t\tMy name is Reggie" << endl;
