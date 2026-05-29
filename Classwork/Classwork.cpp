@@ -24,11 +24,142 @@ int main()
 	/*cout.setf(ios::boolalpha);*/
 	/*SetColor(Black, White);
 	system("cls");*/
+	srand(time(0));
+
+	// 29/05/2026 -- Lesson 5
+
+	const int size = 12;
+	int a[size] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+	/*int min = 1, max = 5;
+	for (size_t i = 0; i < size; i++) {
+		a[i] = rand() % (max - min + 1) + min;
+	}*/
+	for (size_t i = 0; i < size; i++) {
+		cout << a[i] << " ";
+	}
+	cout << endl;
+
+	int c[size * 2 + 1];
+	int ind = 0, x=0;
+	for (size_t i = 1; i <= (size / 2) + 1; i++)
+	{
+		for (size_t j = 0; j <= 3; j++)
+		{
+			c[ind + j] = a[i-1+x];
+		}
+		c[ind + 3] = a[i+x];
+		ind += 4;
+		x++;
+	}
+	for (size_t i = 0; i < ind-1; i++) {
+		cout << c[i] << " ";
+	}
+	cout << endl;
+
+	/*int b = a[0];
+	a[0] = a[size - 1];
+	a[size - 1] = b;
+	for (size_t i = 0; i < size; i++) {
+		cout << a[i] << " ";
+	}
+	cout << endl;*/
+
+
+	/*int b[size];
+	int ind = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (a[i] % 2 == 0)
+		{
+			b[ind++] = a[i];
+		}
+	}
+	for (size_t i = 0; i < ind; i++) {
+		cout << b[i] << " ";
+	}
+	cout << endl;*/
+
+	/*int amount = 0;
+	for (size_t i = 0; i < size; i++) {
+		if (a[i] % 2 == 0) { amount++; }
+	}
+	int b[size];
+	int ind = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (a[i] % 2 == 0) {
+			b[ind] = a[i];
+			ind++;
+		}
+	}
+	for (size_t i = 0; i < amount; i++) {
+		cout << b[i] << " ";
+	}
+	cout << endl;*/
+
+	/*int max_n = a[0], index = 0;
+	for (size_t i = 1; i < size; i++)
+	{
+		if (a[i] >= max_n) {
+			max_n = a[i];
+			index = i;
+		}
+	}
+	cout << "The max value is " << max_n << endl;
+	cout << "It's index is " << index << endl;*/
+
+
+	/*int n;
+	cout << "Enter the number (1-5): ";
+	cin >> n;
+	int amount = 0;
+	for (size_t i = 0; i < size; i++) {
+		if (a[i] == n) { amount++; }
+	}
+	cout << "There are " << amount << " of them." << endl;*/
+
+
+	//const int size = 5;
+	//int a[size]; // = {1, 2, 3, 4, 5};
+
+	//int amount = 0;
+	//int min = 0, max = 9;
+	////cin >> a[0] >> a[1] >> a[2] >> a[3];
+	//for (size_t i = 0; i < size; i++) {
+	//	a[i] = rand() % (max - min + 1) + min;
+	//	//cin >> a[i];
+	//}
+	//for (size_t i = 0; i < size; i++) {
+	//	cout << a[i] << " ";
+	//}
+	//cout << a << endl;
+	/*for (size_t i = 0; i < size; i++) {
+		if (a[i] % 2 == 0) { amount++; }
+	}
+	cout << amount << endl;*/
+
+	/*int a, b, c, d, num, amount = 0;
+	cin >> a >> b >> c >> d;
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		switch (i)
+		{
+		case 0: num = a; break;
+		case 1: num = b; break;
+		case 2: num = c; break;
+		case 3: num = d; break;
+		}
+		if (num % 2 == 0) { amount++; }
+	}
+
+	cout << amount;*/
+
 
 	// 25/05/2026 -- Lesson 4
 
-	int fives = 0, mark, n1 = 0, n2 = 0, n3 = 0;
-	srand(time(0));
+	/*int fives = 0, mark, n1 = 0, n2 = 0, n3 = 0;
+	//srand(time(0));
 	for (size_t i = 0; i < 18; i++)
 	{
 		cout << "Student " << setw(2) << i+1 << " | ";
@@ -54,7 +185,7 @@ int main()
 	}
 	cout << "------" << endl;
 	cout << n1 << " " << n2 << " " << n3 << " - total of twos" << endl;
-	cout << "Total of fives: " << fives << endl;
+	cout << "Total of fives: " << fives << endl;*/
 
 	/*int num;
 	cout << "Enter the number: ";
@@ -310,6 +441,7 @@ int main()
 
 	max = (a > b) ? a : b;
 	max = (a > b && a > c) ? a : (b > c) ? b : c;*/
+
 
 	// 18/05/2026 -- Lesson 2
 	
