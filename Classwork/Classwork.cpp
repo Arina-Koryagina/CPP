@@ -27,7 +27,7 @@ int main()
 
 	// 25/05/2026 -- Lesson 4
 
-	int fives = 0, mark, n1=0, n2=0, n3=0;
+	int fives = 0, mark, n1 = 0, n2 = 0, n3 = 0;
 	srand(time(0));
 	for (size_t i = 0; i < 18; i++)
 	{
