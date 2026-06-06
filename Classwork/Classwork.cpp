@@ -17,27 +17,30 @@ int main()
 	system("cls");*/
 	//srand(time(0));
 
+
+
+
 	// 05/06/2026 -- Lesson 7
 
-	//cout << starLine << cout;
-	starLine();
-	starLine(30);
-	starLine(20, '#');
+	////cout << starLine << cout;
+	//starLine();
+	//starLine(30);
+	//starLine(20, '#');
 
-	/*int a, b, c;
-	cout << "a b c" << endl;
-	cin >> a >> b >> c;
-	cout << avgNum(a, b, c) << endl;*/
+	///*int a, b, c;
+	//cout << "a b c" << endl;
+	//cin >> a >> b >> c;
+	//cout << avgNum(a, b, c) << endl;*/
 
-	const int size = 10;
-	int arr[size], minValue = 20, maxValue = 50;
-	setArray(arr, size); // , minValue, maxValue
-	printArray(arr, size);
-	/*ascBubbleSort(arr, size);
-	printArray(arr, size);*/
-	int value;
-	cin >> value;
-	cout << findValue(arr, size, value) << endl;
+	//const int size = 10;
+	//int arr[size], minValue = 20, maxValue = 50;
+	//setArray(arr, size); // , minValue, maxValue
+	//printArray(arr, size);
+	///*ascBubbleSort(arr, size);
+	//printArray(arr, size);*/
+	//int value;
+	//cin >> value;
+	//cout << findValue(arr, size, value) << endl;
 
 
 	// 01/06/2026 -- Lesson 6
