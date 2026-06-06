@@ -2,18 +2,9 @@
 #include<Windows.h>
 #include<iomanip>
 
-using namespace std;
+#include"myFunc.h"
 
-//enum Color
-//{
-//	Black = 0, Blue = 1, Green = 2, Cyan = 3, Red = 4, Magenta = 5, Brown = 6, LightGray = 7, DarkGray = 8,
-//	LightBlue = 9, LightGreen = 10, LightCyan = 11, LightRed = 12, LightMagenta = 13, Yellow = 14, White = 15
-//};
-//
-//void SetColor(int text, int background)
-//{
-//	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)((background << 4) | text));
-//}
+using namespace std;
 
 int main()
 {
@@ -24,37 +15,210 @@ int main()
 	/*cout.setf(ios::boolalpha);*/
 	/*SetColor(Black, White);
 	system("cls");*/
-	srand(time(0));
+	//srand(time(0));
+
+	// 05/06/2026 -- Lesson 7
+
+	//cout << starLine << cout;
+	starLine();
+	starLine(30);
+	starLine(20, '#');
+
+	/*int a, b, c;
+	cout << "a b c" << endl;
+	cin >> a >> b >> c;
+	cout << avgNum(a, b, c) << endl;*/
+
+	const int size = 10;
+	int arr[size], minValue = 20, maxValue = 50;
+	setArray(arr, size); // , minValue, maxValue
+	printArray(arr, size);
+	/*ascBubbleSort(arr, size);
+	printArray(arr, size);*/
+	int value;
+	cin >> value;
+	cout << findValue(arr, size, value) << endl;
+
+
+	// 01/06/2026 -- Lesson 6
+
+	//const int n = 3;
+	//int a[n][n];
+	//int min, max;
+	//cin >> min >> max;
+
+	//int combination = max - min + 1;
+	//if (n*n <= combination)
+	//{
+	//	for (size_t i = 0; i < n; i++)
+	//	{
+	//		for (size_t j = 0; j < n; j++)
+	//		{
+	//			bool flag = true; // is unique
+	//			while (flag)
+	//			{
+	//				int num = rand() % (max - min + 1) + min;
+	//				for (size_t row = 0; row < n; row++)
+	//				{
+	//					for (size_t col = 0; col < n; col++)
+	//					{
+	//						if (a[row][col] == num)
+	//						{
+	//							flag = false; // found
+	//						}
+	//					}
+	//				}
+	//				if (flag)
+	//				{
+	//					a[i][j] = num;
+	//					break;
+	//				}
+	//				flag = true;
+	//			}
+	//		}
+	//	}
+	//	for (size_t i = 0; i < n; i++)
+	//	{
+	//		for (size_t j = 0; j < n; j++)
+	//		{
+	//			cout << setw(3) << a[i][j] << " ";
+	//		}
+	//		cout << endl;
+	//	}
+	//}
+	//else
+	//{
+	//	cout << "Not enough of unique numbers." << endl;
+	//}
+
+	//const int row = 4, col = 4;
+	//int a[row][col];
+	//int min = 0, max = 9;
+	//for (size_t i = 0; i < row; i++)
+	//{
+	//	for (size_t j = 0; j < col; j++)
+	//	{
+	//		a[i][j] = rand() % (max - min + 1) + min;
+	//	}
+	//}
+
+	//int maxValue = a[0][0], minValue = a[0][0], amount = 0, sum = 0;
+	//int iMin = 0, jMin = 0, iMax = 0, jMax = 0;
+	//for (size_t i = 0; i < row; i++)
+	//{
+	//	for (size_t j = 0; j < col; j++)
+	//	{
+	//		/*if (a[i][j] > maxValue)
+	//		{
+	//			maxValue = a[i][j];
+	//			iMax = i;
+	//			jMax = j;
+	//		}*/
+	//		if (a[i][j] >= maxValue)
+	//		{
+	//			maxValue = a[i][j];
+	//			iMax = i;
+	//			jMax = j;
+	//		}
+	//		else if (a[i][j] < minValue)
+	//		{
+	//			minValue = a[i][j];
+	//			iMin = i;
+	//			jMin = j;
+	//		}
+	//	}
+	//}
+
+	//for (size_t i = 0; i < row; i++)
+	//{
+	//	for (size_t j = 0; j < col; j++)
+	//	{
+	//		(i==iMax&&j==jMax || i == iMin && j == jMin) ? SetColor(Red, White) : SetColor(Black, White);
+	//		cout << a[i][j] << " ";
+	//	}
+	//	cout << endl;
+	//}
+	//cout << endl;
+	//SetColor(Black, White);
+
+	//for (size_t i = iMin; i <= iMax; i++)
+	//{
+	//	for (size_t j = 0; j < col; j++)
+	//	{
+	//		if (i == iMin && j > jMin || i == iMax && j < jMax || i > iMin && i < iMax)
+	//		{
+	//			amount++;
+	//			sum += a[i][j];
+	//		}
+	//	}
+	//}
+	//cout << amount << " " << sum << endl;
+
+	/*int i = 0, j = 0;
+	while (i < row)
+	{
+		if (j == col)
+		{
+			i++;
+			cout << endl;
+			j = 0;
+		}
+		else
+		{
+			cout << a[i][j++] << " ";
+		}
+		
+	}*/
+
+	//for (size_t i = 0; i < row; i++)
+	//{
+	//	for (size_t j = 0; j < col; j++)
+	//	{	
+	//		(a[i][j] == maxValue) ? SetColor(Red, White) : (a[i][j] == minValue) ? SetColor(Green, White) : SetColor(Black, White);
+	//		/*if (a[i][j] == maxValue)
+	//		{
+	//			SetColor(Red, White);
+	//		}
+	//		else if (a[i][j] == minValue)
+	//		{
+	//			SetColor(Green, White);
+	//		}*/
+	//		cout << a[i][j] << " ";
+	//		// SetColor(Black, White);
+	//	}
+	//	cout << endl;
+	//}
+
 
 	// 29/05/2026 -- Lesson 5
 
-	const int size = 12;
-	int a[size] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-	/*int min = 1, max = 5;
-	for (size_t i = 0; i < size; i++) {
-		a[i] = rand() % (max - min + 1) + min;
-	}*/
-	for (size_t i = 0; i < size; i++) {
-		cout << a[i] << " ";
-	}
-	cout << endl;
+	//const int size = 12;
+	//int a[size] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+	///*int min = 1, max = 5;
+	//for (size_t i = 0; i < size; i++) {
+	//	a[i] = rand() % (max - min + 1) + min;
+	//}*/
+	//for (size_t i = 0; i < size; i++) {
+	//	cout << a[i] << " ";
+	//}
+	//cout << endl;
 
-	int c[size * 2 + 1];
-	int ind = 0, x=0;
-	for (size_t i = 1; i <= (size / 2) + 1; i++)
-	{
-		for (size_t j = 0; j <= 3; j++)
-		{
-			c[ind + j] = a[i-1+x];
-		}
-		c[ind + 3] = a[i+x];
-		ind += 4;
-		x++;
-	}
-	for (size_t i = 0; i < ind-1; i++) {
-		cout << c[i] << " ";
-	}
-	cout << endl;
+	//int c[size * 2 + 1];
+	//int ind = 0, x=0;
+	//for (size_t i = 1; i <= (size / 2) + 1; i++)
+	//{
+	//	for (size_t j = 0; j <= 3; j++)
+	//	{
+	//		c[ind + j] = a[i-1+x];
+	//	}
+	//	c[ind + 3] = a[i+x];
+	//	ind += 4;
+	//	x++;
+	//}
+	//for (size_t i = 0; i < ind-1; i++) {
+	//	cout << c[i] << " ";
+	//}
+	//cout << endl;
 
 	/*int b = a[0];
 	a[0] = a[size - 1];
