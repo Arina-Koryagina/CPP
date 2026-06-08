@@ -49,7 +49,14 @@ float avgNum(int a, int b, int c)
 	return avg;
 }
 
-void setArray(int arr[], int size, int minValue = 0, int maxValue = 9)
+template<class T>
+double avg3(T a, T b, T c)
+{
+	return (a + b + c) / 3.;
+}
+
+template<class T>
+void setArray(T arr[], int size, int minValue = 0, int maxValue = 9)
 {
 	srand(time(0));
 	for (size_t i = 0; i < size; i++)
@@ -58,7 +65,8 @@ void setArray(int arr[], int size, int minValue = 0, int maxValue = 9)
 	}
 }
 
-void printArray(int arr[], int size)
+template<class T>
+void printArray(T arr[], int size)
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -67,11 +75,12 @@ void printArray(int arr[], int size)
 	cout << endl;
 }
 
-void ascBubbleSort(int arr[], int size)
+template<class T>
+void ascBubbleSort(T arr[], int size, int startInd=0, int endInd=size-1)
 {
-	for (size_t j = 0; j < size-1; j++)
+	for (size_t j = startInd; j < endInd; j++)
 	{
-		for (size_t i = 0; i < size-1-j; i++)
+		for (size_t i = startInd; i < endInd -j; i++)
 		{
 			if (arr[i] > arr[i + 1])
 			{
@@ -84,15 +93,94 @@ void ascBubbleSort(int arr[], int size)
 	}
 }
 
-int findValue(int arr[], int size, int value)
+template<class T>
+int findValue(T arr[], int size, T value, int action=0)
 {
-	for (int i = 0; i < size; i++)
+	switch (action)
 	{
-		if (arr[i] == value)
+	case 0:
+		for (int i = 0; i < size; i++)
 		{
-			return i;
+			if (arr[i] == value)
+			{
+				return i;
+			}
 		}
+		break;
+	case 1:
+		for (int i = 0; i < size; i++)
+		{
+			if (arr[i] < value)
+			{
+				return i;
+			}
+		}
+		break;
+	case 2:
+		for (int i = size-1; i >= 0; i--)
+		{
+			if (arr[i] < value)
+			{
+				return i;
+			}
+		}
+		break;
+	default:
+		break;
 	}
 
 	return -1;
+}
+
+template<class T>
+T maxValueArray(T arr[], int size)
+{
+	T maxValue = arr[0];
+	for (size_t i = 1; i < size; i++)
+	{
+		if (arr[i] > maxValue) {
+			maxValue = arr[i];
+		}
+	}
+
+	return maxValue;
+}
+
+template<class T>
+int countValueArray(T arr[], int size, T value)
+{
+	int countValue = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] == value) {
+			countValue++;
+		}
+	}
+
+	return countValue;
+}
+
+template<class T>
+T sumValueArray(T arr[], int size)
+{
+	T sumValue = arr[0];
+	for (size_t i = 1; i < size; i++)
+	{
+		sumValue += arr[i];
+	}
+
+	return sumValue;
+}
+
+template<class T1, class T2, class T3>
+auto Sum(T1 a, T2 b, T3 c) -> decltype(a+b)
+{
+	return a + b + c;
+}
+
+void rec()
+{
+	static int a = 0;
+	a++;
+	rec();
 }

@@ -17,7 +17,48 @@ int main()
 	system("cls");*/
 	//srand(time(0));
 
+	// 08/06/2026 -- Lesson 8
 
+	const int size = 10;
+	int arr[size];
+	setArray(arr, size, -7, 7);
+	printArray(arr, size);
+
+	int frstInd = findValue(arr, size, 0, 1);
+	int lastInd = findValue(arr, size, 0, 2);
+	ascBubbleSort(arr, size, frstInd, lastInd);
+	printArray(arr, size);
+
+	//rec();
+
+	/*const int size = 10;
+	double arr[size];
+	setArray(arr, size);
+	printArray(arr, size);
+
+	findValue(arr, size, 3.);
+	ascBubbleSort(arr, size);
+
+	avg3(1, 2, 3);
+	printArray(arr, size);
+	cout << maxValueArray(arr, size) << endl;
+	cout << countValueArray(arr, size, maxValueArray(arr, size)) << endl;
+	cout << sumValueArray(arr, size) << endl;*/
+
+	//cout << Sum(3, 5.5) << endl;
+	//cout << Sum(3.5, 5) << endl;
+	//cout << Sum(3.5, 5.5) << endl;
+	//cout << Sum(3, 'a', 2.5) << endl;
+
+	//auto a = 10 + 3.5;
+	//
+	//int c = 9;
+
+	//a = 3.5;
+
+	//decltype(a + c) b;
+
+	//auto m = 'c';
 
 
 	// 05/06/2026 -- Lesson 7
