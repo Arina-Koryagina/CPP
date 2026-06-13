@@ -44,3 +44,38 @@ int binarySearch(int arr[], int size, int x)
 
     return -1;
 }
+
+int numLength(int num)
+{
+    int size = 0;
+    do
+    {
+        num /= 10;
+        size++;
+    } while (num > 0);
+
+    return size;
+}
+
+void numConvert(int bin[], int size, int num)
+{
+    for (size_t i = 0; i < size; i++)
+    {
+        bin[i] = num % 10;
+        num /= 10;
+    }
+}
+
+int bin_to_dec(int bin[], int size)
+{
+    int dec = 0;
+    for (size_t i = 0; i < size; i++)
+    {
+        if (bin[i] == 1)
+        {
+            dec += pow(2, i);
+        }
+    }
+
+    return dec;
+}
