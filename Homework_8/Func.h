@@ -5,6 +5,17 @@
 
 using namespace std;
 
+enum Color
+{
+	Black = 0, Blue = 1, Green = 2, Cyan = 3, Red = 4, Magenta = 5, Brown = 6, LightGray = 7, DarkGray = 8,
+	LightBlue = 9, LightGreen = 10, LightCyan = 11, LightRed = 12, LightMagenta = 13, Yellow = 14, White = 15
+};
+
+void SetColor(int text, int background)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)((background << 4) | text));
+}
+
 void setArray(int arr[], int size, int min = 0, int max = 20)
 {
 	for (size_t i = 0; i < size; i++)
@@ -13,13 +24,12 @@ void setArray(int arr[], int size, int min = 0, int max = 20)
 	}
 }
 
-void printArray(int arr[], int size)
+void printArray(int arr[], int size, int start = 0)
 {
-	for (size_t i = 0; i < size; i++)
+	for (int i = start; i < size; i++)
 	{
 		cout << arr[i] << " ";
 	}
-	cout << endl;
 }
 
 void bubbleSort(int arr[], int size, bool reverse = false)
@@ -49,5 +59,22 @@ void bubbleSort(int arr[], int size, bool reverse = false)
 				}
 			}
 		}
+	}
+}
+
+void insertionSort(int arr[], int size, int start = 0)  // https://www.geeksforgeeks.org/dsa/insertion-sort-algorithm/
+{
+	for (int i = start + 1; i < size; i++)
+	{
+		int key = arr[i];
+		int j = i - 1;
+
+		while (j >= start && arr[j] > key)
+		{
+			arr[j + 1] = arr[j];
+			j--;
+		}
+
+		arr[j + 1] = key;
 	}
 }

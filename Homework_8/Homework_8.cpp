@@ -11,6 +11,8 @@ int main()
 	SetConsoleCP(65001);
 	SetConsoleOutputCP(65001);
 	srand(time(0));
+	SetColor(Black, White);
+	system("cls");
 
 	//  I
 	cout << "\tI" << endl;
@@ -20,14 +22,16 @@ int main()
 	// якщо false — за зростанням. Перші 2 параметри функції — це масив
 	// і його розмір, третій параметр за замовчуванням дорівнює false.
 
-	const int size_1 = 10;
-	int arr_1[size_1];
-	setArray(arr_1, size_1);
-	printArray(arr_1, size_1);
+	//const int size_1 = 10;
+	//int arr_1[size_1];
+	//setArray(arr_1, size_1);
+	//printArray(arr_1, size_1);
+	//cout << endl;
 
-	bubbleSort(arr_1, size_1, true);
+	//bubbleSort(arr_1, size_1, true);
 
-	printArray(arr_1, size_1);
+	//printArray(arr_1, size_1);
+	//cout << endl;
 
 
 	//  II
@@ -35,25 +39,36 @@ int main()
 	// Написати функцію, яка сортує першу половину масиву за спаданням,
 	// а другу — за зростанням, використовуючи сортування простими вставками.
 
-
 	//const int size_2 = 10;
 	//int arr_2[size_2];
-	//setArray(arr_2, size_2);
+	//setArray(arr_2, size_2, 1, 15);
 	//printArray(arr_2, size_2);
+	//cout << endl;
+
+	//bubbleSort(arr_2, size_2 / 2, true);
+	//insertionSort(arr_2, size_2, size_2 / 2);
+
+	//SetColor(Green, White);
+	//printArray(arr_2, size_2 / 2);
+	//SetColor(Red, White);
+	//printArray(arr_2, size_2, size_2 / 2);
+	//SetColor(Black, White);
+	//cout << endl;
 
 
-
-
-	//  II
-	cout << "\n\tII" << endl;
+	//  III
+	cout << "\n\tIII" << endl;
 	// У функцію передається масив випадкових чисел у діапазоні від -20 до +20.
 	// Необхідно знайти позиції крайніх від'ємних елементів (найлівішого від'ємного елемента
 	// і найправішого від'ємного елемента) і відсортувати елементи, що знаходяться між ними.
 
-	//const int size_3 = 20;
-	//int arr_3[size_3];
-	//setArray(arr_3, size_3, -20);
-	//printArray(arr_3, size_3);
+	const int size_3 = 20;
+	int arr_3[size_3];
+	setArray(arr_3, size_3, -20);
+	printArray(arr_3, size_3);
+	cout << endl;
+
+
 
 
 	return 0;
