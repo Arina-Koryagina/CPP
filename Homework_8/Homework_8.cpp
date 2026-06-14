@@ -14,7 +14,83 @@ int main()
 	SetColor(Black, White);
 	system("cls");
 
-	//  I
+	/*-----------------------*/
+	cout << " Tic-tac-toe" << endl;
+	cout << "0 0 - top left \n2 0 - top right \n2 2 - bottom right" << endl;
+
+	const int size = 3;
+	char field[size][size];
+	char grid[] = {'|', '-'};
+	bool game = true;
+	int playerScore = 0, botScore = 0;
+	cout << "score - player : bot" << endl;
+
+	do
+	{
+		bool win = false, play = true;
+		fill(field, size);
+		printField(field, grid, size);
+
+		do
+		{
+			playerTurn(field, grid, size);
+			if (winCheck(field, size, 'x'))
+			{
+				win = true;
+				break;
+			}
+			if (fieldCheck(field, size))
+			{
+				play = false;
+				break;
+			}
+			botTurn(field, grid, size);
+			if (winCheck(field, size, 'o'))
+			{
+				break;
+			}
+		} while (play);
+
+		if (play)
+		{
+			if (win)
+			{
+				cout << "You won! Score: ";
+				playerScore++;
+			}
+			else
+			{
+				cout << "You lost! Score: ";
+				botScore++;
+			}
+		}
+		else
+		{
+			cout << "Draw! Score: ";
+		}
+		printScore(playerScore, botScore);
+		cout << "Want to play again? (Y - 1/n - 0): ";
+		cin >> game;
+	} while (game);
+
+	//bool win;
+	//do{
+	//	playerTurn(field, grid, size);
+	//	win = winCheck(field, size, 'x');
+	//	botTurn(field, grid, size);
+	//	win = winCheck(field, size, 'o');
+	//} while (not win);
+	//if (win) {
+	//	cout << "Win";
+	//}
+	//else {
+	//	cout << "Lose";
+	//}
+
+
+	/*-----------------------*/
+
+	/*//  I
 	cout << "\tI" << endl;
 	// Дано масив чисел розмірністю 10 елементів. Написати функцію, яка
 	// сортує масив за зростанням або за спаданням, залежно від третього
@@ -93,7 +169,7 @@ int main()
 		cout << arr_3[i] << " ";
 		SetColor(Black, White);
 	}
-	cout << endl;
+	cout << endl;*/
 
 
 	return 0;
