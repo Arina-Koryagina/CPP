@@ -73,24 +73,10 @@ int main()
 		cin >> game;
 	} while (game);
 
-	//bool win;
-	//do{
-	//	playerTurn(field, grid, size);
-	//	win = winCheck(field, size, 'x');
-	//	botTurn(field, grid, size);
-	//	win = winCheck(field, size, 'o');
-	//} while (not win);
-	//if (win) {
-	//	cout << "Win";
-	//}
-	//else {
-	//	cout << "Lose";
-	//}
-
 
 	/*-----------------------*/
 
-	/*//  I
+	//  I
 	cout << "\tI" << endl;
 	// Дано масив чисел розмірністю 10 елементів. Написати функцію, яка
 	// сортує масив за зростанням або за спаданням, залежно від третього
@@ -169,7 +155,7 @@ int main()
 		cout << arr_3[i] << " ";
 		SetColor(Black, White);
 	}
-	cout << endl;*/
+	cout << endl;
 
 
 	return 0;
