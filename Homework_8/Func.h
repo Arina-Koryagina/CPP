@@ -32,13 +32,13 @@ void printArray(int arr[], int size, int start = 0)
 	}
 }
 
-void bubbleSort(int arr[], int size, bool reverse = false)
+void bubbleSort(int arr[], int size, bool reverse = false, int start = 0)
 {
 	if (reverse)
 	{
-		for (size_t j = 0; j < size - 1; j++)
+		for (size_t j = start; j < size - 1; j++)
 		{
-			for (size_t i = 0; i < size - 1 - j; i++)
+			for (size_t i = start; i < size - 1 - (j - start); i++)
 			{
 				if (arr[i] < arr[i + 1])
 				{
@@ -49,9 +49,9 @@ void bubbleSort(int arr[], int size, bool reverse = false)
 	}
 	else
 	{
-		for (size_t j = 0; j < size - 1; j++)
+		for (size_t j = start; j < size - 1; j++)
 		{
-			for (size_t i = 0; i < size - 1 - j; i++)
+			for (size_t i = start; i < size - 1 - (j - start); i++)
 			{
 				if (arr[i] > arr[i + 1])
 				{
@@ -77,4 +77,30 @@ void insertionSort(int arr[], int size, int start = 0)  // https://www.geeksforg
 
 		arr[j + 1] = key;
 	}
+}
+
+int findIndex(int arr[], int size, bool order = true) // order: T - first, F - last
+{
+	if (order)
+	{
+		for (int i = 0; i < size; i++)
+		{
+			if (arr[i] < 0)
+			{
+				return i;
+			}
+		}
+	}
+	else
+	{
+		for (int i = size - 1; i >= 0; i--)
+		{
+			if (arr[i] < 0)
+			{
+				return i;
+			}
+		}
+	}
+
+	return -1;
 }
