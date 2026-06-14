@@ -72,6 +72,7 @@ pow(num, deg) -- степінь
 srand(n); -- рандом (зміна константи)
 time(0) -- поточний час
 rand() % m + i -- рандом
+rand() % (maxValue - minValue + 1) + minValue;
 
 type name(param)  -- функція
 {
