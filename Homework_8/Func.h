@@ -18,7 +18,7 @@ void SetColor(int text, int background)
 
 /*-----------------------*/
 template<int ROWS, int COLS>
-void fill(char(&field)[ROWS][COLS], int size = 3, char symbol = ' ')  // https://www.geeksforgeeks.org/cpp/pass-array-to-functions-in-cpp/
+void fill(char(&field)[ROWS][COLS], int size, int pos[], char symbol = ' ')  // https://www.geeksforgeeks.org/cpp/pass-array-to-functions-in-cpp/
 {
 	for (size_t j = 0; j < size; j++)
 	{
@@ -26,6 +26,7 @@ void fill(char(&field)[ROWS][COLS], int size = 3, char symbol = ' ')  // https:/
 		{
 			field[j][i] = symbol;
 		}
+		pos[j] = j;
 	}
 }
 
@@ -36,12 +37,39 @@ void fill(char(&field)[ROWS][COLS], int x, int y, char symbol)
 }
 
 template<int ROWS, int COLS>
-void printField(char(&field)[ROWS][COLS], char grid[], int size = 3)
+void printField(char(&field)[ROWS][COLS], char grid[], int size, int pos[])
 {
 	cout << endl;
 	for (size_t j = 0; j < size; j++)
 	{
-		cout << " ";
+		if (j == 0)
+		{
+			SetColor(LightCyan, White);
+			cout << "y";
+			SetColor(Magenta, White);
+			cout << "x ";
+			for (size_t i = 0; i < size; i++)
+			{
+				cout << pos[i] << "   ";
+			}
+			SetColor(Black, White);
+		}
+		else if (j != size)
+		{
+			cout << "  ";
+			for (size_t j = 0; j < size; j++)
+			{
+				for (size_t i = 0; i < 3; i++)
+				{
+					cout << grid[1];
+				}
+				cout << " ";
+			}
+		}
+		cout << endl;
+		SetColor(LightCyan, White);
+		cout << pos[j] << "  ";
+		SetColor(Black, White);
 		for (size_t i = 0; i < size; i++)
 		{
 			if (field[j][i] == 'x')
@@ -52,24 +80,11 @@ void printField(char(&field)[ROWS][COLS], char grid[], int size = 3)
 			{
 				SetColor(Red, White);
 			}
-			cout << " " << field[j][i];
+			cout << field[j][i] << " ";
 			SetColor(Black, White);
 			if (i+1 != size)
 			{
-				cout << " " << grid[0];
-			}
-		}
-		cout << endl;
-		if (j+1 != size)
-		{
-			cout << " ";
-			for (size_t j = 0; j < size; j++)
-			{
-				for (size_t i = 0; i < 3; i++)
-				{
-					cout << grid[1];
-				}
-				cout << " ";
+				cout << grid[0] << " ";
 			}
 		}
 		cout << endl;
@@ -111,25 +126,31 @@ bool fieldCheck(char(&field)[ROWS][COLS], int size)
 }
 
 template<int ROWS, int COLS>
-void playerTurn(char(&field)[ROWS][COLS], char grid[], int size)
+void playerTurn(char(&field)[ROWS][COLS], char grid[], int size, int coord[])
 {
 	int pos[2];
-	cout << "Enter the position: ";
+	cout << "Enter the position (";
+	SetColor(Magenta, White);
+	cout << "x ";
+	SetColor(LightCyan, White);
+	cout << "y";
+	SetColor(Black, White);
+	cout << "): ";
 	cin >> pos[0] >> pos[1];
 	if (fieldCheck(field, size, pos[0], pos[1]))
 	{
 		fill(field, pos[0], pos[1], 'x');
-		printField(field, grid, size);
+		printField(field, grid, size, coord);
 	}
 	else 
 	{
 		cout << "Wrong position. Try again." << endl;
-		playerTurn(field, grid, size);
+		playerTurn(field, grid, size, coord);
 	}
 }
 
 template<int ROWS, int COLS>
-void botTurn(char(&field)[ROWS][COLS], char grid[], int size)
+void botTurn(char(&field)[ROWS][COLS], char grid[], int size, int coord[])
 {
 	int pos[2];
 	pos[0] = rand() % size;
@@ -137,11 +158,11 @@ void botTurn(char(&field)[ROWS][COLS], char grid[], int size)
 	if (fieldCheck(field, size, pos[0], pos[1]))
 	{
 		fill(field, pos[0], pos[1], 'o');
-		printField(field, grid, size);
+		printField(field, grid, size, coord);
 	}
 	else
 	{
-		botTurn(field, grid, size);
+		botTurn(field, grid, size, coord);
 	}
 }
 

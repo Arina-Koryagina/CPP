@@ -16,24 +16,23 @@ int main()
 
 	/*-----------------------*/
 	cout << " Tic-tac-toe" << endl;  // https://onlinegdb.com/OMzFOJBEi
-	cout << "0 0 - top left \n2 0 - top right \n2 2 - bottom right" << endl;
 
 	const int size = 3;
 	char field[size][size];
 	char grid[] = {'|', '-'};
+	int pos[size];
 	bool game = true;
 	int playerScore = 0, botScore = 0;
-	cout << "score - player : bot" << endl;
 
 	do
 	{
 		bool win = false, play = true;
-		fill(field, size);
-		printField(field, grid, size);
+		fill(field, size, pos);
+		printField(field, grid, size, pos);
 
 		do
 		{
-			playerTurn(field, grid, size);
+			playerTurn(field, grid, size, pos);
 			if (winCheck(field, size, 'x'))
 			{
 				win = true;
@@ -44,7 +43,7 @@ int main()
 				play = false;
 				break;
 			}
-			botTurn(field, grid, size);
+			botTurn(field, grid, size, pos);
 			if (winCheck(field, size, 'o'))
 			{
 				break;
@@ -72,11 +71,12 @@ int main()
 		cout << "Want to play again? (Y - 1/n - 0): ";
 		cin >> game;
 	} while (game);
+	cout << endl;
 
 
 	/*-----------------------*/
 
-	//  I
+/*	//  I
 	cout << "\tI" << endl;
 	// Дано масив чисел розмірністю 10 елементів. Написати функцію, яка
 	// сортує масив за зростанням або за спаданням, залежно від третього
@@ -155,7 +155,7 @@ int main()
 		cout << arr_3[i] << " ";
 		SetColor(Black, White);
 	}
-	cout << endl;
+	cout << endl;*/
 
 
 	return 0;
