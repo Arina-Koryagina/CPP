@@ -56,7 +56,7 @@ double avg3(T a, T b, T c)
 }
 
 template<class T>
-void setArray(T arr[], int size, int minValue = 0, int maxValue = 9)
+void setArray(T* arr, int size, int minValue = 0, int maxValue = 9)
 {
 	srand(time(0));
 	for (size_t i = 0; i < size; i++)
@@ -66,7 +66,7 @@ void setArray(T arr[], int size, int minValue = 0, int maxValue = 9)
 }
 
 template<class T>
-void printArray(T arr[], int size)
+void printArray(T* arr, int size)
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -74,9 +74,63 @@ void printArray(T arr[], int size)
 	}
 	cout << endl;
 }
+template<class T>
+T* addValueArray(T* arr, int* size, int adding, T value, bool random = true, int minValue = 0, int maxValue = 9)
+{
+	T* temp = new T [*size + 1];
+	for (size_t i = 0; i < *size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	if (random)
+	{
+		for (size_t i = 0; i < adding; i++)
+		{
+			temp[*size + i] = rand() % (maxValue - minValue + 1) + minValue;
+		}
+	}
+	else
+	{
+		for (size_t i = 0; i < adding; i++)
+		{
+			T newValue;
+			cout << "Enter new value: ";
+			cin >> newValue;
+			temp[*size + i] = newValue;
+		}
+	}
+	delete[] arr;
+	(*size)++;
+	return temp;
+}
 
 template<class T>
-void ascBubbleSort(T arr[], int size, int startInd=0, int endInd=size-1)
+T* delValueArray(T* arr, int* size, int adding, T value)
+{
+
+}
+
+//int* extendArray(int arr[], int size, int adding, int minValue = 0, int maxValue = 9)
+//{
+//	int newSize = size + adding;
+//	int* np = new int[newSize];
+//	for (int i = 0; i < newSize; i++)
+//	{
+//		np[i] = arr[i];
+//	}
+//
+//	delete[] arr;
+//	arr = np;
+//	for (int i = size; i < newSize; i++)
+//	{
+//		arr[i] = rand() % (maxValue - minValue + 1) + minValue;
+//	}
+//
+//	return arr;
+//}
+
+template<class T>
+void ascBubbleSort(T* arr, int size, int startInd=0, int endInd=size-1)
 {
 	for (size_t j = startInd; j < endInd; j++)
 	{
@@ -94,7 +148,7 @@ void ascBubbleSort(T arr[], int size, int startInd=0, int endInd=size-1)
 }
 
 template<class T>
-int findValue(T arr[], int size, T value, int action=0)
+int findValue(T* arr, int size, T value, int action=0)
 {
 	switch (action)
 	{
@@ -133,7 +187,7 @@ int findValue(T arr[], int size, T value, int action=0)
 }
 
 template<class T>
-T maxValueArray(T arr[], int size)
+T maxValueArray(T* arr, int size)
 {
 	T maxValue = arr[0];
 	for (size_t i = 1; i < size; i++)

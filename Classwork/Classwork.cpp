@@ -10,16 +10,111 @@ int main()
 {
 	SetConsoleCP(65001);
 	SetConsoleOutputCP(65001);
-	/*SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);*/
+	//SetConsoleCP(1251);
 	/*cout.setf(ios::boolalpha);*/
-	/*SetColor(Black, White);
-	system("cls");*/
-	//srand(time(0));
+	//SetColor(Black, White);
+	SetColor(White, Black);
+	system("cls");
+	srand(time(0));
+	 
+	// 15/06/2026 -- Lesson 9
+	
+	int size;
+	cout << "Size: ";
+	cin >> size;
+	int* p = new int[size];
+	setArray(p, size);
+	printArray(p, size);
+	
+	int adding;
+	cout << "Adding: ";
+	cin >> adding;
+	//p = extendArray(p, size, adding);
+	//size += adding;
+	p = addValueArray(p, &size, adding, 999);
+	printArray(p, size);
+
+	//p = new int;
+	
+	
+	//setArray(p, size);
+	//printArray(p, size);
+
+
+
+	//const int size = 5;
+	//int arr[] = { 1, 2, 3, 4, 5 };
+	//for (size_t i = 0; i < size; i++)
+	//{
+	//	cout << *(arr + i) << " ";
+	//}
+	//cout << endl;
+
+	//for (int* i = arr; i != arr+5; i++)
+	//{
+	//	cout << *i << " ";
+	//}
+	//cout << endl;
+
+	//for (int i = size-1; i >= 0; i--)
+	//{
+	//	cout << *(arr + i) << " ";
+	//}
+	//cout << endl;
+
+	//int a = 5;
+	//cout << a << endl;
+	//cout << &a << endl;
+	//cout << typeid(a).name() << endl;
+	//cout << sizeof(a) << endl;
+
+	//int* p = &a;
+	//cout << p << endl;
+	//cout << *p << endl;
+	//*p = 999;
+	//cout << a << endl;
+
+	//int *p1, p2;
+	//int* p2 = 0x00000025AD45;
+	//*p2 = 5465654;
+
+	// + - ++ -- 
+
+	//p += 1; // p + n = p + n * type;
+	//cout << p << endl;
+	//cout << *p << endl;
+
+	//int arr[4] = { 1, 2, 32, 4 };
+	//for (size_t i = 0; i < 4; i++)
+	//{
+	//	cout << *(arr + i) << endl; // *(arr + 1) = arr[i] -- індексатор
+	//}
+
+	//cout << *(arr + 0) << endl;
+	//cout << *(arr + 1) << endl;
+	//cout << *(arr + 2) << endl;
+	//cout << *(arr + 3) << endl;
+
+	// > < >= <= == != 
+
+	//int b = -5;
+	//int* pb = &b;
+	//cout << pb << endl;
+	//cout << (p == pb) << endl;
+
+	//int c = 0;
+	//int* pc = nullptr; // = 0;
+	//cout << c << endl;
+	//cout << pc << endl;
+	//if (pc == &b)
+	//{
+	//	pc = &c;
+	//}
+
 
 	// 08/06/2026 -- Lesson 8
 
-	const int size = 10;
+	/*const int size = 10;
 	int arr[size];
 	setArray(arr, size, -7, 7);
 	printArray(arr, size);
@@ -27,7 +122,7 @@ int main()
 	int frstInd = findValue(arr, size, 0, 1);
 	int lastInd = findValue(arr, size, 0, 2);
 	ascBubbleSort(arr, size, frstInd, lastInd);
-	printArray(arr, size);
+	printArray(arr, size);*/
 
 	//rec();
 

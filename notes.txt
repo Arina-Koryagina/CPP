@@ -35,6 +35,15 @@ long long - 8b
 float  - 4b (7 digits)
 double - 8b (15 digits)
 long double - 16b (19 digits)
+int* - покажчик(* - pointer) на int -- зберігає значення int змінною
+Спеціальний тип данних значенням якого є адреса
+*p -- розіменування покажчика
+p + n = p + n * type
+*(arr + 1) = arr[i] -- індексатор
+int a[300000]; -- статична пам'ять
+int* p = new int; -- динамічна пам'ять
+p = new int; -- memory leaking
+delete p; -- повертання пам'яті
 
 cout << var << endl;
 cin >> var;
