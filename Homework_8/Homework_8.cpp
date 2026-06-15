@@ -15,7 +15,7 @@ int main()
 	system("cls");
 
 	/*-----------------------*/
-	cout << " Tic-tac-toe" << endl;  // https://onlinegdb.com/OMzFOJBEi
+	cout << " Tic-tac-toe" << endl;  // https://onlinegdb.com/ro8PUkveM
 
 	const int size = 3;
 	char field[size][size];
@@ -27,39 +27,71 @@ int main()
 	do
 	{
 		bool win = false, play = true;
+		bool gameMod;
+
+		cout << endl;
+		cout << "(1 - bot, 0 - another player)" << endl;
+		cout << "Who do you want to play with?: ";
+		cin >> gameMod;
+
 		fill(field, size, pos);
 		printField(field, grid, size, pos);
 
-		do
+		if (gameMod)
 		{
-			playerTurn(field, grid, size, pos);
-			if (winCheck(field, size, 'x'))
+			do
 			{
-				win = true;
-				break;
-			}
-			if (fieldCheck(field, size))
+				playerTurn(field, grid, size, pos);
+				if (winCheck(field, size, 'x'))
+				{
+					win = true;
+					break;
+				}
+				if (fieldCheck(field, size))
+				{
+					play = false;
+					break;
+				}
+				botTurn(field, grid, size, pos);
+				if (winCheck(field, size, 'o'))
+				{
+					break;
+				}
+			} while (play);
+		}
+		else
+		{
+			do
 			{
-				play = false;
-				break;
-			}
-			botTurn(field, grid, size, pos);
-			if (winCheck(field, size, 'o'))
-			{
-				break;
-			}
-		} while (play);
+				playerTurn(field, grid, size, pos, 1);
+				if (winCheck(field, size, 'x'))
+				{
+					win = true;
+					break;
+				}
+				if (fieldCheck(field, size))
+				{
+					play = false;
+					break;
+				}
+				playerTurn(field, grid, size, pos, 2);
+				if (winCheck(field, size, 'o'))
+				{
+					break;
+				}
+			} while (play);
+		}
 
 		if (play)
 		{
 			if (win)
 			{
-				cout << "You won! Score: ";
+				cout << "Blue won! Score: ";
 				playerScore++;
 			}
 			else
 			{
-				cout << "You lost! Score: ";
+				cout << "Red won! Score: ";
 				botScore++;
 			}
 		}

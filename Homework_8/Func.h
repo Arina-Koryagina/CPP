@@ -126,7 +126,7 @@ bool fieldCheck(char(&field)[ROWS][COLS], int size)
 }
 
 template<int ROWS, int COLS>
-void playerTurn(char(&field)[ROWS][COLS], char grid[], int size, int coord[])
+void playerTurn(char(&field)[ROWS][COLS], char grid[], int size, int coord[], int mod = 1)
 {
 	int pos[2];
 	cout << "Enter the position (";
@@ -139,7 +139,14 @@ void playerTurn(char(&field)[ROWS][COLS], char grid[], int size, int coord[])
 	cin >> pos[0] >> pos[1];
 	if (fieldCheck(field, size, pos[0], pos[1]))
 	{
-		fill(field, pos[0], pos[1], 'x');
+		if (mod == 1)
+		{
+			fill(field, pos[0], pos[1], 'x');
+		}
+		else
+		{
+			fill(field, pos[0], pos[1], 'o');
+		}
 		printField(field, grid, size, coord);
 	}
 	else 
