@@ -15,7 +15,7 @@ int main()
 	system("cls");
 
 	/*-----------------------*/
-	cout << " Tic-tac-toe" << endl;
+	cout << " Tic-tac-toe" << endl;  // https://onlinegdb.com/OMzFOJBEi
 	cout << "0 0 - top left \n2 0 - top right \n2 2 - bottom right" << endl;
 
 	const int size = 3;
