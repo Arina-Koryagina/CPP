@@ -16,23 +16,133 @@ int main()
 	SetColor(White, Black);
 	system("cls");
 	srand(time(0));
-	 
+	
+	// 19/06/2026 -- Lesson 10
+
+	int m = 10, n = 4;
+	int* a = new int[m];
+	setArray(a, m);
+	printArray(a, m);
+	int* b = new int[n];
+	setArray(b, n);
+	printArray(b, n);
+
+	int size;
+	int* c = nullptr;
+
+	setNewArray(a, m, b, n, c, size);
+	printArray(c, size);
+	setNewArray(a, m, b, n, c, size, 3);
+	printArray(c, size);
+
+
+
+	//int a = 5;
+	//const int* pa = &a;
+	//*pa = 99;
+	//int b = 77;
+	//pa = &b;
+
+	//int* const pa = &a;
+	//*pa = 555;
+	//pa = &b;
+
+	//const int* const pa = &a;
+
+	//const int& rb = b;
+
+
+	/*int a = 5;      int b = 8;
+	int* pa = &a;   int& rb = b;
+	*pa = 99;       rb = 88;
+
+	pa = &b;        rb = a;
+
+	inc(a);*/
+
+	/*const int M = 10, N = 3;
+	int* A = new int[M];
+	int* B = new int[N];
+	setArray(A, M);
+	setArray(B, N);
+
+	SetColor(Blue, Black);
+	cout << "A: ";
+	printArray(A, M);
+	SetColor(Red, Black);
+	cout << "B: ";
+	printArray(B, N);
+
+	int* p = findSubArray(A, M, B, N);
+	SetColor(Green, Black);
+	cout << *p << endl;
+	cout << p << endl;
+	SetColor(White, Black);*/
+
+	/*const int size = 5;
+	int arr[size];
+	setArray(arr, size);
+	printArray(arr, size);
+
+	int* p = sumProdArray(arr, size);
+	cout << p[0] << endl;
+	cout << p[1] << endl;*/
+
+	/*int a = 8;
+	int* pa = &a;
+	cout << sizeof(pa) << endl;*/
+
+	/*int M_1, N_1;
+	
+	cout << "M: ";
+	cin >> M_1;
+	int* A = new int[M_1];
+	setArray(A, M_1);
+	SetColor(Blue, Black);
+	cout << "A: ";
+	printArray(A, M_1);
+	SetColor(White, Black);
+	
+	cout << "N: ";
+	cin >> N_1;
+	int* B = new int[N_1];
+	setArray(B, N_1);
+	SetColor(Red, Black);
+	cout << "B: ";
+	printArray(B, N_1);
+
+	int* C = nullptr;
+	int C_1 = 0;
+
+	for (size_t i = 0; i < M_1; i++)
+	{
+		if (findValue(B, N_1, A[i]) == -1 && findValue(C, C_1, A[i]) == -1)
+		{
+			addValueArray(C, C_1, A[i]);
+			findArray(B, N_1, A[i]);
+		}
+	}
+	SetColor(Green, Black);
+	printArray(C, C_1);
+	SetColor(White, Black);*/
+
+
 	// 15/06/2026 -- Lesson 9
 	
-	int size;
-	cout << "Size: ";
-	cin >> size;
-	int* p = new int[size];
-	setArray(p, size);
-	printArray(p, size);
-	
-	int adding;
-	cout << "Adding: ";
-	cin >> adding;
-	//p = extendArray(p, size, adding);
-	//size += adding;
-	p = addValueArray(p, &size, adding, 999);
-	printArray(p, size);
+	//int size;
+	//cout << "Size: ";
+	//cin >> size;
+	//int* p = new int[size];
+	//setArray(p, size);
+	//printArray(p, size);
+	//
+	//int adding;
+	//cout << "Adding: ";
+	//cin >> adding;
+	////p = extendArray(p, size, adding);
+	////size += adding;
+	//p = addValueArray(p, &size, adding, 999);
+	//printArray(p, size);
 
 	//p = new int;
 	

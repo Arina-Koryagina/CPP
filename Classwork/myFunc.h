@@ -58,7 +58,6 @@ double avg3(T a, T b, T c)
 template<class T>
 void setArray(T* arr, int size, int minValue = 0, int maxValue = 9)
 {
-	srand(time(0));
 	for (size_t i = 0; i < size; i++)
 	{
 		arr[i] = rand() % (maxValue - minValue + 1) + minValue;
@@ -74,43 +73,65 @@ void printArray(T* arr, int size)
 	}
 	cout << endl;
 }
+//template<class T>
+//T* addValueArray(T* arr, int* size, int adding, T value, bool random = true, int minValue = 0, int maxValue = 9)
+//{
+//	T* temp = new T [*size + 1];
+//	for (size_t i = 0; i < *size; i++)
+//	{
+//		temp[i] = arr[i];
+//	}
+//	if (random)
+//	{
+//		for (size_t i = 0; i < adding; i++)
+//		{
+//			temp[*size + i] = rand() % (maxValue - minValue + 1) + minValue;
+//		}
+//	}
+//	else
+//	{
+//		for (size_t i = 0; i < adding; i++)
+//		{
+//			T newValue;
+//			cout << "Enter new value: ";
+//			cin >> newValue;
+//			temp[*size + i] = newValue;
+//		}
+//	}
+//	delete[] arr;
+//	(*size)++;
+//	return temp;
+//}
+
+//template<class T>
+//T* addValueArray(T* arr, int* size, T value)
+//{
+//	T* temp = new T[*size + 1];
+//	for (size_t i = 0; i < *size; i++)
+//	{
+//		temp[i] = arr[i];
+//	}
+//	temp[*size] = value;
+//	delete[] arr;
+//	(*size)++;
+//	return temp;
+//}
+
 template<class T>
-T* addValueArray(T* arr, int* size, int adding, T value, bool random = true, int minValue = 0, int maxValue = 9)
+T* delValueArray(T* arr, int* size)
 {
-	T* temp = new T [*size + 1];
-	for (size_t i = 0; i < *size; i++)
+	T* temp = new T[*size - 1];
+	for (size_t i = 0; i < *size - 1; i++)
 	{
 		temp[i] = arr[i];
 	}
-	if (random)
-	{
-		for (size_t i = 0; i < adding; i++)
-		{
-			temp[*size + i] = rand() % (maxValue - minValue + 1) + minValue;
-		}
-	}
-	else
-	{
-		for (size_t i = 0; i < adding; i++)
-		{
-			T newValue;
-			cout << "Enter new value: ";
-			cin >> newValue;
-			temp[*size + i] = newValue;
-		}
-	}
 	delete[] arr;
-	(*size)++;
+	(*size)--;
+
 	return temp;
 }
 
-template<class T>
-T* delValueArray(T* arr, int* size, int adding, T value)
-{
-
-}
-
-//int* extendArray(int arr[], int size, int adding, int minValue = 0, int maxValue = 9)
+//int* extendArray(int* arr, int size, int adding, int minValue = 0, int maxValue = 9)
 //{
 //	int newSize = size + adding;
 //	int* np = new int[newSize];
@@ -201,12 +222,13 @@ T maxValueArray(T* arr, int size)
 }
 
 template<class T>
-int countValueArray(T arr[], int size, T value)
+int countValueArray(T* arr, int size, T& value)
 {
 	int countValue = 0;
 	for (size_t i = 0; i < size; i++)
 	{
-		if (arr[i] == value) {
+		if (arr[i] == value)
+		{
 			countValue++;
 		}
 	}
@@ -215,7 +237,7 @@ int countValueArray(T arr[], int size, T value)
 }
 
 template<class T>
-T sumValueArray(T arr[], int size)
+T sumValueArray(T* arr, int size)
 {
 	T sumValue = arr[0];
 	for (size_t i = 1; i < size; i++)
@@ -237,4 +259,110 @@ void rec()
 	static int a = 0;
 	a++;
 	rec();
+}
+
+int* sumProdArray(int* arr, int size)
+{
+	int* res = new int[2] {0, 1};
+	//int res[2] = { 0, 1 };
+	for (size_t i = 0; i < size; i++)
+	{
+		res[0] += arr[i];
+		res[1] *= arr[i];
+	}
+
+	return res;
+}
+
+int* findSubArray(int *a, int m, int *b, int n)
+{
+	for (size_t i = 0; i < m-n; i++)
+	{
+		if (a[i] == b[0])
+		{
+			bool ans = true;
+			for (size_t j = 1; j < n; j++)
+			{
+				if (a[i+j] != b[j])
+				{
+					ans = false;
+				}
+			}
+			if (ans)
+			{
+				return &b[0];
+			}
+			else
+			{
+				return nullptr;
+			}
+		}
+	}
+}
+
+void inc(int& a)
+{
+	a++;
+}
+
+template<class T>
+void addValueArray(T*& arr, int& size, T value)
+{
+	T* temp = new T[size + 1];
+	for (size_t i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[size] = value;
+	delete[] arr;
+	size++;
+	arr = temp;
+}
+
+template<class T>
+int findArray(T* arr, int size, const T& key)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] == key)
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
+template<class T>
+void setNewArray(T*& a, int m, T*& b, int n, T* c, int& size)
+{
+	size = m + n;
+	int* c = new int[size];
+	for (size_t i = 0; i < m; i++)
+	{
+		c[i] = a[i];
+	}
+	for (size_t i = 0; i < n; i++)
+	{
+		c[m + i] = b[i];
+	}
+}
+
+template<class T>
+void setNewArray(T*& a, int m, T*& b, int n, T* c, int& size, int ind)
+{
+	size = m + n;
+	int* c = new int[size];
+	for (size_t i = 0; i < ind; i++)
+	{
+		c[i] = a[i];
+	}
+	for (size_t i = 0; i < n; i++)
+	{
+		c[i + ind] = b[i];
+	}
+	for (size_t i = 0; i < m - ind; i++)
+	{
+		c[i + ind + n] = a[i + ind];
+	}
 }
