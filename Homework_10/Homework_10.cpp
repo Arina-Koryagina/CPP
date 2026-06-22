@@ -26,8 +26,19 @@ int main()
 	// - Функція вставки елемента за вказаним індексом.
 	// - Функція видалення елемента за вказаним індексом.
 
-
-
+	//int m = 10;
+	//int* a = nullptr;
+	//a = createArray(m);
+	//setArray(a, m);
+	//printArray(a, m);
+	//a = addValueArray(a, m, 99);
+	//printArray(a, m);
+	//a = addValueArray(a, m, 99, 3);
+	//printArray(a, m);
+	//a = delValueArray(a, m, 3);
+	//printArray(a, m);
+	//deleteArray(a);
+	
 
 	//  II
 	cout << "\n\tII" << endl;
