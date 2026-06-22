@@ -28,6 +28,7 @@ int main()
 
 	//int m = 10;
 	//int* a = nullptr;
+	
 	//a = createArray(m);
 	//setArray(a, m);
 	//printArray(a, m);
@@ -46,7 +47,14 @@ int main()
 	// його розмір. Функція повинна видалити з масиву всі прості числа
 	// і повернути покажчик на новий динамічний масив.
 
+	/*int size = 10;
+	int* arr = new int[size];
+	setArray(arr, size, 2, 30);
+	printArray(arr, size);
 
+	arr = delPrimeNumArray(arr, size);
+	
+	printArray(arr, size);*/
 
 
 	//  III
@@ -55,8 +63,20 @@ int main()
 	// його розмір. Функція розподіляє додатні, від'ємні та нульові
 	// елементи в окремі динамічні масиви.
 
+	const int s = 10;
+	int array[s];
+	setArray(array, s, -20, 20);
+	printArray(array, s);
 
+	int s_fst = 0, s_snd = 0, s_trd = 0;
+	int* fst = new int[s_fst];
+	int* snd = new int[s_snd];
+	int* trd = new int[s_trd];
+	sortArray(array, s, fst, s_fst, snd, s_snd, trd, s_trd);
 
+	printArray(fst, s_fst);
+	printArray(snd, s_snd);
+	printArray(trd, s_trd);
 
 	return 0;
 }

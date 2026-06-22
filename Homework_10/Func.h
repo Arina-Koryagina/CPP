@@ -106,3 +106,42 @@ T* delValueArray(T*& arr, int& size, int ind)
 	(size)--;
 	return temp;
 }
+
+int* delPrimeNumArray(int* arr, int& size)
+{
+	int k = 0;
+	int* temp = new int[size];
+
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] % 2 == 0 || arr[i] % 3 == 0 || arr[i] % 5 == 0)
+		{
+			if (arr[i] != 2 && arr[i] != 3 && arr[i] != 5)
+			{
+				temp[k++] = arr[i];
+			}
+		}
+	}
+	size = k;
+
+	return temp;
+}
+
+void sortArray(int* array, int s, int* fst, int& s_fst, int* snd, int& s_snd, int* trd, int& s_trd)
+{
+	for (size_t i = 0; i < s; i++)
+	{
+		if (array[i] > 0)
+		{
+			fst[s_fst++] = array[i];
+		}
+		else if (array[i] == 0)
+		{
+			snd[s_snd++] = array[i];
+		}
+		else
+		{
+			trd[s_trd++] = array[i];
+		}
+	}
+}
