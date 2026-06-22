@@ -48,10 +48,17 @@ int a[300000]; -- статична пам'ять
 int* p = new int; -- динамічна пам'ять
 p = new int; -- memory leaking
 delete p; -- повертання пам'яті
+type (*name) (param) -- визначення покажчика на функцію
 
-int a = 5;      int b = 8;    -- посилання
+void hello()
+{
+	cout << "Hello" << endl;
+}
+void(*message)() = hello;
+
+int a = 5;      int b = 8;    -- посилання (друге ім'я змінної)
 int* pa = &a;   int& rb = b;
-*pa = 99;       rb = 88;
+*pa = 99;       rb = 88;      -- автоматично розіменований покажчик
 
 cout << var << endl;
 cin >> var;

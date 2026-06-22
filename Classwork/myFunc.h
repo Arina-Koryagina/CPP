@@ -15,44 +15,13 @@ void SetColor(int text, int background)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)((background << 4) | text));
 }
 
-//void starLine()
-//{
-//	for (size_t i = 0; i < 10; i++)
-//	{
-//		cout << "*";
-//	}
-//	cout << endl;
-//}
-//
-//void starLine(int size)
-//{
-//	for (size_t i = 0; i < size; i++)
-//	{
-//		cout << "*";
-//	}
-//	cout << endl;
-//}
-
-void starLine(int size=10, char symbol='*')
+void starLine(int size = 10, char symbol = '*')
 {
 	for (size_t i = 0; i < size; i++)
 	{
 		cout << symbol;
 	}
 	cout << endl;
-}
-
-float avgNum(int a, int b, int c)
-{
-	float avg = (a + b + c) / 3.f;
-
-	return avg;
-}
-
-template<class T>
-double avg3(T a, T b, T c)
-{
-	return (a + b + c) / 3.;
 }
 
 template<class T>
@@ -73,6 +42,187 @@ void printArray(T* arr, int size)
 	}
 	cout << endl;
 }
+
+void printArray(int* arr)
+{
+	int block = _msize(arr);
+	int size = block / sizeof(int);
+	for (size_t i = 0; i < size; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+template<class T>
+bool asc(const T& a, const T& b)
+{
+	return a > b;
+}
+
+template<class T>
+bool dec(const T& a, const T& b)
+{
+	return a < b;
+}
+
+template<class T>
+void bubbleSort(T* arr, int size, bool(*method)(const T&, const T&) = asc)
+{
+	for (size_t j = 0; j < size - 1; j++)
+	{
+		for (size_t i = 0; i < size - 1 - j; i++)
+		{
+			if (method(arr[i], arr[i + 1]))
+			{
+				swap(arr[i], arr[i + 1]);
+			}
+			else
+			{
+				swap(arr[i + 1], arr[i]);
+			}
+		}
+	}
+}
+
+template<class T>
+T maxValueArray(T* arr, int size)
+{
+	T maxValue = arr[0];
+	for (size_t i = 1; i < size; i++)
+	{
+		if (arr[i] > maxValue) {
+			maxValue = arr[i];
+		}
+	}
+
+	return maxValue;
+}
+
+template<class T>
+int findValue(T* arr, int size, T value)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] == value)
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
+//void hello()
+//{
+//	cout << "Hello" << endl;
+//}
+//void goodbye()
+//{
+//	cout << "Goodbye" << endl;
+//}
+// 
+//int add(int a, int b)
+//{
+//	return a + b;
+//}
+//int subtract(int a, int b)
+//{
+//	return a - b;
+//}
+//int multiply(int a, int b)
+//{
+//	return a * b;
+//}
+//int divide(int a, int b)
+//{
+//	return a / b;
+//}
+
+//void pistol(int* bullets)
+//{
+//	cout << "->" << endl;
+//	bullets[0]--;
+//}
+//void gun(int* bullets)
+//{
+//	cout << "-> -> -> -> ->" << endl;
+//	bullets[1] -= 5;
+//}
+//void bow(int* bullets)
+//{
+//	cout << "-> -> ->" << endl;
+//	bullets[2] -= 3;
+//}
+//
+//void (*weapon(int* bullets))(int*)
+//{
+//	void(*weapons[])(int*) = { pistol, gun, bow };
+//
+//	return weapons[findValue(bullets, 3, maxValueArray(bullets, 3))];
+//}
+
+//void kopatel1()
+//{
+//	cout << "Digs one worker with a shovel" << endl;
+//}
+//void kopatel3()
+//{
+//	cout << "Dig three workers with shovels and pickaxes" << endl;
+//}
+//void exkavator()
+//{
+//	cout << "Digs an excavator, workers smoke in a corner.. ))" << endl;
+//}
+//
+//void(*prorab(int len))()
+//{
+//	if (len <= 100)
+//	{
+//		return kopatel1;
+//	}
+//	else if (len <= 500)
+//	{
+//		return kopatel3;
+//	}
+//	else
+//	{
+//		return exkavator;
+//	}
+//}
+
+
+//void starLine()
+//{
+//	for (size_t i = 0; i < 10; i++)
+//	{
+//		cout << "*";
+//	}
+//	cout << endl;
+//}
+//
+//void starLine(int size)
+//{
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		cout << "*";
+//	}
+//	cout << endl;
+//}
+
+//float avgNum(int a, int b, int c)
+//{
+//	float avg = (a + b + c) / 3.f;
+//
+//	return avg;
+//}
+//
+//template<class T>
+//double avg3(T a, T b, T c)
+//{
+//	return (a + b + c) / 3.;
+//}
+// 
 //template<class T>
 //T* addValueArray(T* arr, int* size, int adding, T value, bool random = true, int minValue = 0, int maxValue = 9)
 //{
@@ -117,19 +267,19 @@ void printArray(T* arr, int size)
 //	return temp;
 //}
 
-template<class T>
-T* delValueArray(T* arr, int* size)
-{
-	T* temp = new T[*size - 1];
-	for (size_t i = 0; i < *size - 1; i++)
-	{
-		temp[i] = arr[i];
-	}
-	delete[] arr;
-	(*size)--;
-
-	return temp;
-}
+//template<class T>
+//T* delValueArray(T* arr, int* size)
+//{
+//	T* temp = new T[*size - 1];
+//	for (size_t i = 0; i < *size - 1; i++)
+//	{
+//		temp[i] = arr[i];
+//	}
+//	delete[] arr;
+//	(*size)--;
+//
+//	return temp;
+//}
 
 //int* extendArray(int* arr, int size, int adding, int minValue = 0, int maxValue = 9)
 //{
@@ -149,220 +299,223 @@ T* delValueArray(T* arr, int* size)
 //
 //	return arr;
 //}
+// 
+//template<class T>
+//void mTen(T& n)
+//{
+//	n *= 10;
+//}
+//
+//template<class T>
+//void forEach(T* p, int size, void(*func)(T&) = mTen)
+//{
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		func(p[i]);
+//	}
+//}
 
-template<class T>
-void ascBubbleSort(T* arr, int size, int startInd=0, int endInd=size-1)
-{
-	for (size_t j = startInd; j < endInd; j++)
-	{
-		for (size_t i = startInd; i < endInd -j; i++)
-		{
-			if (arr[i] > arr[i + 1])
-			{
-				swap(arr[i], arr[i + 1]);
-				/*int a = arr[i];
-				arr[i] = arr[i + 1];
-				arr[i + 1] = a;*/
-			}
-		}
-	}
-}
+//template<class T>
+//void ascBubbleSort(T* arr, int size, int startInd=0, int endInd=size-1)
+//{
+//	for (size_t j = startInd; j < endInd; j++)
+//	{
+//		for (size_t i = startInd; i < endInd -j; i++)
+//		{
+//			if (arr[i] > arr[i + 1])
+//			{
+//				swap(arr[i], arr[i + 1]);
+//				/*int a = arr[i];
+//				arr[i] = arr[i + 1];
+//				arr[i + 1] = a;*/
+//			}
+//		}
+//	}
+//}
 
-template<class T>
-int findValue(T* arr, int size, T value, int action=0)
-{
-	switch (action)
-	{
-	case 0:
-		for (int i = 0; i < size; i++)
-		{
-			if (arr[i] == value)
-			{
-				return i;
-			}
-		}
-		break;
-	case 1:
-		for (int i = 0; i < size; i++)
-		{
-			if (arr[i] < value)
-			{
-				return i;
-			}
-		}
-		break;
-	case 2:
-		for (int i = size-1; i >= 0; i--)
-		{
-			if (arr[i] < value)
-			{
-				return i;
-			}
-		}
-		break;
-	default:
-		break;
-	}
+//template<class T>
+//int findValue(T* arr, int size, T value, int action=0)
+//{
+//	switch (action)
+//	{
+//	case 0:
+//		for (int i = 0; i < size; i++)
+//		{
+//			if (arr[i] == value)
+//			{
+//				return i;
+//			}
+//		}
+//		break;
+//	case 1:
+//		for (int i = 0; i < size; i++)
+//		{
+//			if (arr[i] < value)
+//			{
+//				return i;
+//			}
+//		}
+//		break;
+//	case 2:
+//		for (int i = size-1; i >= 0; i--)
+//		{
+//			if (arr[i] < value)
+//			{
+//				return i;
+//			}
+//		}
+//		break;
+//	default:
+//		break;
+//	}
+//
+//	return -1;
+//}
+//
+//
+//template<class T>
+//int countValueArray(T* arr, int size, T& value)
+//{
+//	int countValue = 0;
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		if (arr[i] == value)
+//		{
+//			countValue++;
+//		}
+//	}
+//
+//	return countValue;
+//}
+//
+//template<class T>
+//T sumValueArray(T* arr, int size)
+//{
+//	T sumValue = arr[0];
+//	for (size_t i = 1; i < size; i++)
+//	{
+//		sumValue += arr[i];
+//	}
+//
+//	return sumValue;
+//}
+//
+//template<class T1, class T2, class T3>
+//auto Sum(T1 a, T2 b, T3 c) -> decltype(a+b)
+//{
+//	return a + b + c;
+//}
+//
+//void rec()
+//{
+//	static int a = 0;
+//	a++;
+//	rec();
+//}
+//
+//int* sumProdArray(int* arr, int size)
+//{
+//	int* res = new int[2] {0, 1};
+//	//int res[2] = { 0, 1 };
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		res[0] += arr[i];
+//		res[1] *= arr[i];
+//	}
+//
+//	return res;
+//}
+//
+//int* findSubArray(int *a, int m, int *b, int n)
+//{
+//	for (size_t i = 0; i < m-n; i++)
+//	{
+//		if (a[i] == b[0])
+//		{
+//			bool ans = true;
+//			for (size_t j = 1; j < n; j++)
+//			{
+//				if (a[i+j] != b[j])
+//				{
+//					ans = false;
+//				}
+//			}
+//			if (ans)
+//			{
+//				return &b[0];
+//			}
+//			else
+//			{
+//				return nullptr;
+//			}
+//		}
+//	}
+//}
+//
+//void inc(int& a)
+//{
+//	a++;
+//}
+//
+//template<class T>
+//void addValueArray(T*& arr, int& size, T value)
+//{
+//	T* temp = new T[size + 1];
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		temp[i] = arr[i];
+//	}
+//	temp[size] = value;
+//	delete[] arr;
+//	size++;
+//	arr = temp;
+//}
+//
+//template<class T>
+//int findArray(T* arr, int size, const T& key)
+//{
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		if (arr[i] == key)
+//		{
+//			return i;
+//		}
+//	}
+//
+//	return -1;
+//}
+//
+//template<class T>
+//void setNewArray(T*& a, int m, T*& b, int n, T* c, int& size)
+//{
+//	size = m + n;
+//	int* c = new int[size];
+//	for (size_t i = 0; i < m; i++)
+//	{
+//		c[i] = a[i];
+//	}
+//	for (size_t i = 0; i < n; i++)
+//	{
+//		c[m + i] = b[i];
+//	}
+//}
+//
+//template<class T>
+//void setNewArray(T*& a, int m, T*& b, int n, T* c, int& size, int ind)
+//{
+//	size = m + n;
+//	int* c = new int[size];
+//	for (size_t i = 0; i < ind; i++)
+//	{
+//		c[i] = a[i];
+//	}
+//	for (size_t i = 0; i < n; i++)
+//	{
+//		c[i + ind] = b[i];
+//	}
+//	for (size_t i = 0; i < m - ind; i++)
+//	{
+//		c[i + ind + n] = a[i + ind];
+//	}
+//}
 
-	return -1;
-}
-
-template<class T>
-T maxValueArray(T* arr, int size)
-{
-	T maxValue = arr[0];
-	for (size_t i = 1; i < size; i++)
-	{
-		if (arr[i] > maxValue) {
-			maxValue = arr[i];
-		}
-	}
-
-	return maxValue;
-}
-
-template<class T>
-int countValueArray(T* arr, int size, T& value)
-{
-	int countValue = 0;
-	for (size_t i = 0; i < size; i++)
-	{
-		if (arr[i] == value)
-		{
-			countValue++;
-		}
-	}
-
-	return countValue;
-}
-
-template<class T>
-T sumValueArray(T* arr, int size)
-{
-	T sumValue = arr[0];
-	for (size_t i = 1; i < size; i++)
-	{
-		sumValue += arr[i];
-	}
-
-	return sumValue;
-}
-
-template<class T1, class T2, class T3>
-auto Sum(T1 a, T2 b, T3 c) -> decltype(a+b)
-{
-	return a + b + c;
-}
-
-void rec()
-{
-	static int a = 0;
-	a++;
-	rec();
-}
-
-int* sumProdArray(int* arr, int size)
-{
-	int* res = new int[2] {0, 1};
-	//int res[2] = { 0, 1 };
-	for (size_t i = 0; i < size; i++)
-	{
-		res[0] += arr[i];
-		res[1] *= arr[i];
-	}
-
-	return res;
-}
-
-int* findSubArray(int *a, int m, int *b, int n)
-{
-	for (size_t i = 0; i < m-n; i++)
-	{
-		if (a[i] == b[0])
-		{
-			bool ans = true;
-			for (size_t j = 1; j < n; j++)
-			{
-				if (a[i+j] != b[j])
-				{
-					ans = false;
-				}
-			}
-			if (ans)
-			{
-				return &b[0];
-			}
-			else
-			{
-				return nullptr;
-			}
-		}
-	}
-}
-
-void inc(int& a)
-{
-	a++;
-}
-
-template<class T>
-void addValueArray(T*& arr, int& size, T value)
-{
-	T* temp = new T[size + 1];
-	for (size_t i = 0; i < size; i++)
-	{
-		temp[i] = arr[i];
-	}
-	temp[size] = value;
-	delete[] arr;
-	size++;
-	arr = temp;
-}
-
-template<class T>
-int findArray(T* arr, int size, const T& key)
-{
-	for (size_t i = 0; i < size; i++)
-	{
-		if (arr[i] == key)
-		{
-			return i;
-		}
-	}
-
-	return -1;
-}
-
-template<class T>
-void setNewArray(T*& a, int m, T*& b, int n, T* c, int& size)
-{
-	size = m + n;
-	int* c = new int[size];
-	for (size_t i = 0; i < m; i++)
-	{
-		c[i] = a[i];
-	}
-	for (size_t i = 0; i < n; i++)
-	{
-		c[m + i] = b[i];
-	}
-}
-
-template<class T>
-void setNewArray(T*& a, int m, T*& b, int n, T* c, int& size, int ind)
-{
-	size = m + n;
-	int* c = new int[size];
-	for (size_t i = 0; i < ind; i++)
-	{
-		c[i] = a[i];
-	}
-	for (size_t i = 0; i < n; i++)
-	{
-		c[i + ind] = b[i];
-	}
-	for (size_t i = 0; i < m - ind; i++)
-	{
-		c[i + ind + n] = a[i + ind];
-	}
-}

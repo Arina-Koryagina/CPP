@@ -1,6 +1,7 @@
 #include<iostream>
 #include<Windows.h>
 #include<iomanip>
+#include<conio.h>
 
 #include"myFunc.h"
 
@@ -17,9 +18,83 @@ int main()
 	system("cls");
 	srand(time(0));
 	
+	// 22/06/2026 -- Lesson 11
+
+	/*int a, b, op;
+	int(*operation[])(int, int) = { add, subtract, multiply, divide };
+	cin >> a >> b;
+	cout << "0 -- +\n1 -- -\n2 -- *\n3 -- /" << endl;
+	cin >> op;
+	cout << operation[op](a, b) << endl;*/
+
+	/*float calc[3];
+	float(*count)();
+	
+	cout << "0 -- +\n1 -- -\n2 -- *\n3 -- /";
+	cin >> calc[0] >> calc[1] >> calc[2];
+
+	count = calculate(calc);
+	cout << count() << endl;*/
+
+
+	/*int bullets[] = { 50, 50, 50 };
+	void(*shoot)(int*);
+	while (true)
+	{
+		if (_kbhit())
+		{
+			int c = _getch();
+			switch (c)
+			{
+			case ' ':
+				shoot = weapon(bullets);
+				shoot(bullets);
+				break;
+			case 'a':
+				bow(bullets);
+				break;
+			default:
+				break;
+			}
+		}
+	}*/
+
+	/*int len = 600;
+	void(*director)() = prorab(len);
+	director();*/
+
+	/*int size = 10;
+	int* p = new int[size];
+	setArray(p, size);
+	printArray(p);
+	printArray(p, size);
+	bubbleSort(p, size);
+	printArray(p, size);
+	bubbleSort(p, size, dec);
+	printArray(p, size);*/
+
+	/*forEach(p, size, mTen);
+	printArray(p);*/
+
+	/*void(*message)() = hello;
+	message();
+
+	message = goodbye;
+
+	message();
+
+	void(*func)(int, char) = starLine;*/
+
+	/*void(*message[])() = { hello, goodbye };
+	for (size_t i = 0; i < 2; i++)
+	{
+		message[i]();
+	}*/
+
+
 	// 19/06/2026 -- Lesson 10
 
-	int m = 10, n = 4;
+	/*int m = 10, n = 4;
 	int* a = new int[m];
 	setArray(a, m);
 	printArray(a, m);
@@ -33,7 +108,7 @@ int main()
 	setNewArray(a, m, b, n, c, size);
 	printArray(c, size);
 	setNewArray(a, m, b, n, c, size, 3);
-	printArray(c, size);
+	printArray(c, size);*/
 
 
 
