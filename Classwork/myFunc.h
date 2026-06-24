@@ -43,10 +43,11 @@ void printArray(T* arr, int size)
 	cout << endl;
 }
 
-void printArray(int* arr)
+template<class T>
+void printArray(T* arr)
 {
 	int block = _msize(arr);
-	int size = block / sizeof(int);
+	int size = block / sizeof(T);
 	for (size_t i = 0; i < size; i++)
 	{
 		cout << arr[i] << " ";
@@ -55,48 +56,175 @@ void printArray(int* arr)
 }
 
 template<class T>
-bool asc(const T& a, const T& b)
+void createArray(T**& arr, int row, int col)
 {
-	return a > b;
-}
-
-template<class T>
-bool dec(const T& a, const T& b)
-{
-	return a < b;
-}
-
-template<class T>
-void bubbleSort(T* arr, int size, bool(*method)(const T&, const T&) = asc)
-{
-	for (size_t j = 0; j < size - 1; j++)
+	arr = new T* [row];
+	for (size_t i = 0; i < row; i++)
 	{
-		for (size_t i = 0; i < size - 1 - j; i++)
+		arr[i] = new T[col];
+	}
+}
+
+template<class T>
+void setArray(T** arr, int row, int col, int minValue = 0, int maxValue = 9)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
 		{
-			if (method(arr[i], arr[i + 1]))
-			{
-				swap(arr[i], arr[i + 1]);
-			}
-			else
-			{
-				swap(arr[i + 1], arr[i]);
-			}
+			arr[i][j] = rand() % (maxValue - minValue + 1) + minValue;
 		}
 	}
 }
 
 template<class T>
-T maxValueArray(T* arr, int size)
+void printArray(T** arr, int row, int col)
 {
-	T maxValue = arr[0];
-	for (size_t i = 1; i < size; i++)
+	for (size_t i = 0; i < row; i++)
 	{
-		if (arr[i] > maxValue) {
-			maxValue = arr[i];
+		for (size_t j = 0; j < col; j++)
+		{
+			cout << arr[i][j] << " ";
 		}
+		cout << endl;
 	}
+	cout << endl;
+}
 
-	return maxValue;
+template<class T>
+void printArray(T** arr)
+{
+	int block = _msize(arr);
+	int row = block / sizeof(T*);
+	block = _msize(*arr);
+	int col = block / sizeof(T);
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+
+template<class T>
+void deleteArray(T**& arr, int size)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;
+	arr = nullptr;
+}
+
+template<class T>
+void deleteArray(T**& arr)
+{
+	int block = _msize(arr);
+	int size = block / sizeof(T*);
+	for (size_t i = 0; i < size; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;
+	arr = nullptr;
+}
+
+//template<class T>
+//void addRowArray(T**& arr, int& row, int col)
+//{
+//	T** temp = new T*[row + 1];
+//	createArray(temp, row + 1, col);
+//	for (size_t i = 0; i < row; i++)
+//	{
+//		for (size_t j = 0; j < col; j++)
+//		{
+//			temp[i][j] = arr[i][j];
+//		}
+//	}
+//	setArray(temp[row], col);
+//	deleteArray(temp);
+//	row++;
+//	arr = temp;
+//}
+
+template<class T>
+void addEndRowArray(T**& arr, int& row, int col, T* newRow = nullptr)
+{
+	T** temp = new T*[row + 1];
+	for (size_t i = 0; i < row; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[row] = new T[col];
+	for (size_t i = 0; i < col; i++)
+	{
+		temp[row][i] = (newRow != nullptr) ? newRow[i] : 0;
+	}
+	//deleteArray(arr);
+	delete[] arr;
+	row++;
+	arr = temp;
+}
+
+template<class T>
+void addStartRowArray(T**& arr, int& row, int col, T* newRow = nullptr)
+{
+	T** temp = new T * [row + 1];
+	temp[0] = new T[col];
+	for (size_t i = 0; i < col; i++)
+	{
+		temp[0][i] = (newRow != nullptr) ? newRow[i] : 0;
+	}
+	for (size_t i = 0; i < row; i++)
+	{
+		temp[i+1] = arr[i];
+	}
+	delete[] arr;
+	row++;
+	arr = temp;
+}
+
+template<class T>
+void addRowArray(T**& arr, int& row, int col, int ind, T* newRow = nullptr)
+{
+	T** temp = new T * [row + 1];
+	for (size_t i = 0; i < ind; i++)
+	{
+		temp[i] = arr[i]; 
+	}
+	temp[ind] = new T[col];
+	for (size_t i = 0; i < col; i++)
+	{
+		temp[ind][i] = (newRow != nullptr) ? newRow[i] : 0;
+	}
+	for (size_t i = ind; i < row; i++)
+	{
+		temp[i+1] = arr[i];
+	}
+	delete[] arr;
+	row++;
+	arr = temp;
+}
+
+template<class T>
+void delRowArray(T**& arr, int& row, int col, int ind)
+{
+	T** temp = new T * [row - 1];
+	for (size_t i = 0; i < ind; i++)
+	{
+		temp[i] = arr[i]; 
+	}
+	for (size_t i = ind; i < row; i++)
+	{
+		temp[i] = arr[i+1];
+	}
+	delete[] arr;
+	row--;
+	arr = temp;
 }
 
 template<class T>
@@ -112,6 +240,73 @@ int findValue(T* arr, int size, T value)
 
 	return -1;
 }
+
+template<class T>
+void adjustArray(T**& arr, int& row, int col)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		if (findValue(arr[i], col, 0) != -1)
+		{
+			delRowArray(arr, row, col, i);
+		}
+	}
+}
+
+//template<class T>
+//void addValueArray(T*& arr, int& size, T value)
+//{
+//	T* temp = new T[size + 1];
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		temp[i] = arr[i];
+//	}
+//	temp[size] = value;
+//	delete[] arr;
+//	size++;
+//	arr = temp;
+//}
+
+//template<class T>
+//bool asc(const T& a, const T& b)
+//{
+//	return a > b;
+//}
+//
+//template<class T>
+//bool dec(const T& a, const T& b)
+//{
+//	return a < b;
+//}
+//
+//template<class T>
+//void bubbleSort(T* arr, int size, bool(*method)(const T&, const T&) = asc)
+//{
+//	for (size_t j = 0; j < size - 1; j++)
+//	{
+//		for (size_t i = 0; i < size - 1 - j; i++)
+//		{
+//			if (method(arr[i], arr[i + 1]))
+//			{
+//				swap(arr[i], arr[i + 1]);
+//			}
+//		}
+//	}
+//}
+//
+//template<class T>
+//T maxValueArray(T* arr, int size)
+//{
+//	T maxValue = arr[0];
+//	for (size_t i = 1; i < size; i++)
+//	{
+//		if (arr[i] > maxValue) {
+//			maxValue = arr[i];
+//		}
+//	}
+//
+//	return maxValue;
+//}
 
 //void hello()
 //{
@@ -457,19 +652,6 @@ int findValue(T* arr, int size, T value)
 //	a++;
 //}
 //
-//template<class T>
-//void addValueArray(T*& arr, int& size, T value)
-//{
-//	T* temp = new T[size + 1];
-//	for (size_t i = 0; i < size; i++)
-//	{
-//		temp[i] = arr[i];
-//	}
-//	temp[size] = value;
-//	delete[] arr;
-//	size++;
-//	arr = temp;
-//}
 //
 //template<class T>
 //int findArray(T* arr, int size, const T& key)

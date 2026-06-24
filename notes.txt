@@ -40,7 +40,8 @@ int* - покажчик(* - pointer) на int -- зберігає значенн
 розмір покажчика однаковий для будь-якого типу (залежить від середовища)
 *p -- розіменування покажчика
 const int* pa = &a  -- покажчик на константне значення
-int* const pa = &a  -- константний покажчик
+посилання (&) - автоматично розіменований покажчик на константне значення, друге ім'я змінної
+int* const pa  -- константний покажчик
 const int* const pa = &a -- константний покажчик на константне значення
 p + n = p + n * type
 *(arr + 1) = arr[i] -- індексатор
@@ -54,11 +55,21 @@ void hello()
 {
 	cout << "Hello" << endl;
 }
-void(*message)() = hello;
+void(*message)() = hello; -- покажчик на функцію
+int(*operation[])(int, int) = { add, subtract, multiply, divide };
+void (*weapon(int* bullets))(int*)
+{
+	void(*weapons[])(int*) = { pistol, gun, bow };
+
+	return weapons[findValue(bullets, 3, maxValueArray(bullets, 3))];
+}
 
 int a = 5;      int b = 8;    -- посилання (друге ім'я змінної)
 int* pa = &a;   int& rb = b;
 *pa = 99;       rb = 88;      -- автоматично розіменований покажчик
+
+*(*(p + i) + j) = p[i][j]  -- отримати значення елементу у двовимірному динамічному масиві
+
 
 cout << var << endl;
 cin >> var;

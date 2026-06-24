@@ -18,6 +18,53 @@ int main()
 	system("cls");
 	srand(time(0));
 	
+	// 24/06/2026 -- Lesson 12
+
+	int row = 5, col = 5;
+	int** p = nullptr;
+	
+	createArray(p, row, col);
+	setArray(p, row, col);
+	//printArray(p, row, col);
+	printArray(p);
+
+	adjustArray(p, row, col);
+	printArray(p);
+
+	/*int* t = new int[col];
+	setArray(t, col);
+
+	addEndRowArray(p, row, col, t);
+	delete[] t;
+	printArray(p, row, col);
+	
+	addStartRowArray(p, row, col);
+	printArray(p, row, col);
+
+	addRowArray(p, row, col, 3);
+	printArray(p, row, col);
+	
+	delRowArray(p, row, col, 0);
+	printArray(p, row, col);*/
+
+	//deleteArray(p, row);
+	//deleteArray(p);
+
+	
+
+	// *(*(p + i) + j) = p[i][j]
+
+	/*int a = 5;
+	int* p1 = &a;
+	int** p2 = &p1;
+
+	cout << *p1 << endl;
+	cout << p1 << endl;
+	cout << p2 << endl;
+	cout << *p2 << endl;
+	cout << **p2 << endl;*/
+
+
 	// 22/06/2026 -- Lesson 11
 
 	/*int a, b, op;
