@@ -24,17 +24,17 @@ int main()
 
 	int m = 10, n = 10, op;
 	int* a = new int[m];
-	setArray(a, m);
+	setArray(a, m, -5, 50);
 	printArray(a, m);
 	int* b = new int[n];
-	setArray(b, n);
+	setArray(b, n, -5, 50);
 	printArray(b, n);
 
-	int(*Action[])(int*, int, int*, int) = { getMax, getMin, getAvg };
+	double(*operation[])(int*, int) = { maxFunc, minFunc, avgFunc };
 	cout << "1 - max\n2 - min\n3 - avg" << endl;
 	cin >> op;
 	
-	cout << Action[op - 1](a, m, b, n) << endl;
+	cout << Action(a, m, b, n, operation[op - 1]) << endl;
 	
 
 	return 0;

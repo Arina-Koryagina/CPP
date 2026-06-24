@@ -35,7 +35,7 @@ void printArray(T* arr, int size)
 }
 
 template<class T>
-T maxFunc(T* arr, int size)
+double maxFunc(T* arr, int size)
 {
 	T maxValue = arr[0];
 	for (size_t i = 1; i < size; i++)
@@ -50,22 +50,7 @@ T maxFunc(T* arr, int size)
 }
 
 template<class T>
-T getMax(T* a, int m, T* b, int n)
-{
-	T one = maxFunc(a, m);
-	T two = maxFunc(b, n);
-	if (one > two)
-	{
-		return one;
-	}
-	else
-	{
-		return two;
-	}
-}
-
-template<class T>
-T minFunc(T* arr, int size)
+double minFunc(T* arr, int size)
 {
 	T minValue = arr[0];
 	for (size_t i = 1; i < size; i++)
@@ -80,22 +65,7 @@ T minFunc(T* arr, int size)
 }
 
 template<class T>
-T getMin(T* a, int m, T* b, int n)
-{
-	T one = minFunc(a, m);
-	T two = minFunc(b, n);
-	if (one > two)
-	{
-		return two;
-	}
-	else
-	{
-		return one;
-	}
-}
-
-template<class T>
-float avgFunc(T* arr, int size)
+double avgFunc(T* arr, int size)
 {
 	T value = arr[0];
 	for (size_t i = 1; i < size; i++)
@@ -103,11 +73,24 @@ float avgFunc(T* arr, int size)
 		value += arr[i];
 	}
 
-	return value / size;
+	return double(value) / size;
 }
 
 template<class T>
-T getAvg(T* a, int m, T* b, int n)
+auto Action(T* a, int m, T* b, int n, double(*oper)(int*, int))
 {
-	return (avgFunc(a, m) + avgFunc(b, n)) / 2;
+	int size = m + n;
+	T* temp = new T[size];
+	for (size_t i = 0; i < m; i++)
+	{
+		temp[i] = a[i];
+	}
+	for (size_t i = 0; i < n; i++)
+	{
+		temp[i + m] = b[i];
+	}
+	delete[] a;
+	delete[] b;
+
+	return oper(temp, size);
 }
