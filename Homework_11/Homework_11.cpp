@@ -22,7 +22,19 @@ int main()
 	// якщо обрано avg, передається покажчик на функцію, яка шукає середнє.
 	// Повернуте значення функції Action — результат вибору користувача max, min, avg.
 
+	int m = 10, n = 10, op;
+	int* a = new int[m];
+	setArray(a, m);
+	printArray(a, m);
+	int* b = new int[n];
+	setArray(b, n);
+	printArray(b, n);
 
+	int(*Action[])(int*, int, int*, int) = { getMax, getMin, getAvg };
+	cout << "1 - max\n2 - min\n3 - avg" << endl;
+	cin >> op;
+	
+	cout << Action[op - 1](a, m, b, n) << endl;
 	
 
 	return 0;
