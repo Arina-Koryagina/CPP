@@ -46,8 +46,7 @@ void printArray(T* arr, int size)
 template<class T>
 void printArray(T* arr)
 {
-	int block = _msize(arr);
-	int size = block / sizeof(T);
+	int size = _msize(arr) / sizeof(T);
 	for (size_t i = 0; i < size; i++)
 	{
 		cout << arr[i] << " ";
@@ -78,6 +77,20 @@ void setArray(T** arr, int row, int col, int minValue = 0, int maxValue = 9)
 }
 
 template<class T>
+void setArray(T** arr, int minValue = 0, int maxValue = 9)
+{
+	int row = _msize(arr) / sizeof(T*);
+	int col = _msize(*arr) / sizeof(T);
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			arr[i][j] = rand() % (maxValue - minValue + 1) + minValue;
+		}
+	}
+}
+
+template<class T>
 void printArray(T** arr, int row, int col)
 {
 	for (size_t i = 0; i < row; i++)
@@ -94,10 +107,8 @@ void printArray(T** arr, int row, int col)
 template<class T>
 void printArray(T** arr)
 {
-	int block = _msize(arr);
-	int row = block / sizeof(T*);
-	block = _msize(*arr);
-	int col = block / sizeof(T);
+	int row = _msize(arr) / sizeof(T*);
+	int col = _msize(*arr) / sizeof(T);
 	for (size_t i = 0; i < row; i++)
 	{
 		for (size_t j = 0; j < col; j++)
@@ -105,6 +116,28 @@ void printArray(T** arr)
 			cout << arr[i][j] << " ";
 		}
 		cout << endl;
+	}
+	cout << endl;
+}
+
+template<class T>
+void printArray(T*** arr)
+{
+	int a = _msize(arr) / sizeof(T**);
+	for (int k = 0; k < a; k++)
+	{
+		int row = _msize(arr[k]) / sizeof(T*);
+		int col = _msize(*arr[k]) / sizeof(T);
+		printArray(arr[k], row, col);
+		/*for (int i = 0; i < row; i++)
+		{
+			for (int j = 0; j < col; j++)
+			{
+				cout << arr[k][i][j] << " ";
+			}
+			cout << endl;
+		}
+		cout << endl;*/
 	}
 	cout << endl;
 }
@@ -131,6 +164,67 @@ void deleteArray(T**& arr)
 	}
 	delete[] arr;
 	arr = nullptr;
+}
+
+int getDevisorCount(int n)
+{
+	int k = 0;
+	for (size_t i = 2; i < n; i++)
+	{
+		if (n % i == 0)
+		{
+			k++;
+		}
+	}
+
+	return k;
+}
+
+void getDevisors(int*& arr, int num, int a)
+{
+	int* devisors = new int[a];
+	int ind = 0;
+	for (int n = num - 1; n >= 2; n--)
+	{
+		if (num % n == 0)
+		{
+			devisors[ind++] = num / n;
+		}
+	}
+	delete[] arr;
+	arr = devisors;
+}
+
+int*** set3DArray(int* p)
+{
+	int num = _msize(p) / sizeof(int);
+	int a = getDevisorCount(num);
+	int*** arr = new int** [a];
+	int* rowsArray = new int[a];
+	getDevisors(rowsArray, num, a);
+
+	for (int k = 0; k < a; k++)
+	{
+		int row = rowsArray[k];
+		int col = num / row;
+		createArray(arr[k], row, col);
+		for (int i = 0; i < row; i++)
+		{
+			for (int j = 0; j < col; j++)
+			{
+				arr[k][i][j] = p[j + (i * col)];
+			}
+		}
+	}
+
+	return arr;
+}
+
+int** multiplyMatrix(int** a, int** b, int row, int col)
+{
+	int** c = nullptr;
+	createArray(c, row, col);
+
 }
 
 //template<class T>
@@ -253,19 +347,36 @@ void adjustArray(T**& arr, int& row, int col)
 	}
 }
 
-//template<class T>
-//void addValueArray(T*& arr, int& size, T value)
-//{
-//	T* temp = new T[size + 1];
-//	for (size_t i = 0; i < size; i++)
-//	{
-//		temp[i] = arr[i];
-//	}
-//	temp[size] = value;
-//	delete[] arr;
-//	size++;
-//	arr = temp;
-//}
+template<class T>
+T* addValueArray(T*& arr, int& size, int ind, T value = 0)
+{
+	T* temp = new T[size + 1];
+	for (size_t i = 0; i < ind; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[ind] = value;
+	for (size_t i = ind; i < size; i++)
+	{
+		temp[i + 1] = arr[i];
+	}
+	delete[] arr;
+
+	size++;
+	return temp;
+}
+
+template<class T>
+void addColArray(T**& arr, int row, int& col, int ind, T* newCol = nullptr)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		addValueArray(arr[i], col, ind, newCol[i]);
+		col--;
+	}
+	col++;
+}
+
 
 //template<class T>
 //bool asc(const T& a, const T& b)

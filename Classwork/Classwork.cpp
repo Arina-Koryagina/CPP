@@ -18,18 +18,73 @@ int main()
 	system("cls");
 	srand(time(0));
 	
-	// 24/06/2026 -- Lesson 12
+	// 26/06/2026 -- Lesson 13
 
-	int row = 5, col = 5;
+	int** a = nullptr;
+	int row_a = 4, col_a = 2;
+	createArray(a, row_a, col_a);
+	setArray(a);
+	printArray(a);
+
+	int** b = nullptr;
+	int row_b = 2, col_b = 3;
+	createArray(b, row_b, col_b);
+	setArray(b);
+	printArray(b);
+
+	int** c = multiplyMatrix(a, b, row_a, col_b);
+
+	/*int n;
+	cin >> n;
+	int* p = new int[n];
+	setArray(p, n);
+	printArray(p);
+	cout << endl;
+
+	int*** p3 = nullptr;
+	p3 = set3DArray(p);
+	printArray(p3);*/
+
+	//int*** p3 = new int**[2];
+	//*p3 = new int*[2];
+	//**p3 = new int[2];
+	////***p3 = { {{0, 1}, {1, 0}}, {{1, 1}, {0, 0}} };
+	//printArray(p3);
+
+	/*double** a;
+	a = new double*;
+	*a = new double;
+	**a = 5;*/
+	/*double** a = ((new double*) = new double(5));
+	cout << **a << endl;*/
+
+	/*int row = 3, col = 4;
 	int** p = nullptr;
 	
 	createArray(p, row, col);
 	setArray(p, row, col);
-	//printArray(p, row, col);
 	printArray(p);
 
-	adjustArray(p, row, col);
-	printArray(p);
+	int* t = new int[col];
+	setArray(t, col);
+
+	addColArray(p, row, col, 2, t);
+	delete[] t;
+	printArray(p, row, col);*/
+
+
+	// 24/06/2026 -- Lesson 12
+
+	//int row = 5, col = 5;
+	//int** p = nullptr;
+	//
+	//createArray(p, row, col);
+	//setArray(p, row, col);
+	////printArray(p, row, col);
+	//printArray(p);
+
+	//adjustArray(p, row, col);
+	//printArray(p);
 
 	/*int* t = new int[col];
 	setArray(t, col);
@@ -54,15 +109,15 @@ int main()
 
 	// *(*(p + i) + j) = p[i][j]
 
-	/*int a = 5;
-	int* p1 = &a;
-	int** p2 = &p1;
+	//int a = 5;
+	//int* p1 = &a;
+	//int** p2 = &p1;
 
-	cout << *p1 << endl;
-	cout << p1 << endl;
-	cout << p2 << endl;
-	cout << *p2 << endl;
-	cout << **p2 << endl;*/
+	//cout << *p1 << endl; // значення a
+	//cout << p1 << endl; // адреса p1
+	//cout << p2 << endl; // адреса p2
+	//cout << *p2 << endl; // адреса p1
+	//cout << **p2 << endl; // значення a
 
 
 	// 22/06/2026 -- Lesson 11
