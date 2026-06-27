@@ -83,29 +83,27 @@ int** multiplyMatrix(int** a, int** b)
 {
 	int col = _msize(*a) / sizeof(int);
 	int row = _msize(b) / sizeof(int*);
-	if (col == row)
-	{
-		int n = col;
-		row = _msize(a) / sizeof(int*);
-		col = _msize(*b) / sizeof(int);
-		int** c = nullptr;
-		createArray(c, row, col);
-		for (int k = 0; k < row; k++)
-		{
-			for (int p = 0; p < col; p++)
-			{
-				for (int i = 0; i < n; i++)
-				{
-					cout << k << ";" << p << ": ";
-					cout << k << ";" << i << " + " << i << ";" << p << endl;
-				}
-			}
-		}
-		return c;
-	}
-	else
+	if (col != row)
 	{
 		return nullptr;
 	}
 
+	int j = col;
+	row = _msize(a) / sizeof(int*);
+	col = _msize(*b) / sizeof(int);
+	int** c = nullptr;
+	createArray(c, row, col);
+	for (int m = 0; m < row; m++)
+	{
+		for (int p = 0; p < col; p++)
+		{
+			c[m][p] = 0;
+			for (int n = 0; n < j; n++)
+			{
+				c[m][p] += a[m][n] * b[n][p];
+			}
+		}
+	}
+
+	return c;
 }
