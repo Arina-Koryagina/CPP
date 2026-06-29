@@ -35,6 +35,19 @@ long long - 8b
 float  - 4b (7 digits)
 double - 8b (15 digits)
 long double - 16b (19 digits)
+
+\0 - нуль-термінал, завершує рядок
+strlen(const char*);  -- довжина
+strcpy(char*, const char*); -- копіювання
+strcpy_s(char*, int len, const char*);
+strcat(st1, st2); -- переписування рядка
+strncat(st1, st2, 2);
+cout << strcmp(st1, st2) << endl; -- порівняння посимвольно
+до першого розходження, за значенням (ASCII), а не довжиною
+cout << strncmp(st1, st2, 3) << endl; - до певного елементу
+cout << _stricmp(st1, st2) << endl; - без урахування регістру
+cout << _strnicmp(st1, st2, 3) << endl;
+
 int* - покажчик(* - pointer) на int -- зберігає значення int змінною
 Спеціальний тип данних значенням якого є адреса,
 розмір покажчика однаковий для будь-якого типу (залежить від середовища)

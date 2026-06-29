@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<Windows.h>
 #include<iomanip>
@@ -18,21 +19,109 @@ int main()
 	system("cls");
 	srand(time(0));
 	
+	// 29/06/2026 -- Lesson 14
+
+	/*char buffer[1024];
+	cin.getline(buffer, 1024);
+	int len = strlen(buffer);
+	char* str = new char[len + 1];
+	strcpy(str, buffer);*/
+	
+	//cout << countWords(str) << endl;
+	//cout << isPalindrome(str) << endl;
+	cout << mystrcmp("bcaAaaaAabnn", "bbaaABa123") << endl;
+	cout << strcmp("bcaAaaaAabnn", "bbaaABa123") << endl;
+	
+	//cout << str << endl;
+
+	//char st1[80], st2[80];
+	//cout << "1: "; cin.getline(st1, 80);
+	//cout << "2: "; cin.getline(st2, 80);
+
+	//strcpy(st1, st2);
+	//strncpy_s(st1, 80, st2, 3);
+	//strcat(st1, st2);
+	//strncat(st1, st2, 2);
+	//cout << strcmp(st1, st2) << endl; // посимвольно до першого розходження
+	//cout << strncmp(st1, st2, 3) << endl;
+	//cout << _stricmp(st1, st2) << endl;
+	//cout << _strnicmp(st1, st2, 3) << endl;
+
+	//char* t = strchr(st1, 'a');
+	//char* t = strrchr(st1, 'a');
+	//char* t = strstr(st1, "ma");
+	//if (t != nullptr) // (t)
+	//{
+	//	cout << t << endl;
+	//}
+
+	//_strset(st1, '*');
+	//int a = atoi(st1);
+	//long a = atol(st1);
+	//double d = atof(st1);
+	//cout << a << endl;
+
+	//_itoa(100, st1, 10);
+
+	/*cout << _strupr(st1) << endl;
+	cout << _strlwr(st1) << endl;
+
+	cout << isalnum('1') << endl;
+	cout << isdigit('1') << endl;
+	cout << isalpha('1') << endl;
+	cout << isspace('1') << endl;
+	cout << ispunct('1') << endl;
+	cout << isprint('1') << endl;
+	cout << isupper('1') << endl;
+	cout << islower('1') << endl;*/
+
+	//cout << "1: " << st1 << endl;
+	//cout << "2: " << st2 << endl;
+
+
+	//char buffer[1024];
+	//cin.getline(buffer, 1024);
+	//int len = strlen(buffer);
+	//char* str = new char[len + 1];
+	//strcpy(str, buffer);
+	////str = removeSymbol(str, 'l');
+	//cout << str << endl;
+	//strcpy_s(str, len + 1, buffer);
+	/*for (size_t i = 0; i < strlen(buffer) + 1; i++)
+	{
+		str[i] = buffer[i];
+	}*/
+
+	//char st[] = "Hello, World!"; //{ 'H', 'e', 'l', 'l', 'o', '\0'};
+	//int a[5];
+	//cout << a << endl;
+	/*cout << st << endl;
+	cout << "String length: ";
+	cout << lenStr(st) << endl;
+	cout << strlen(st) << endl;*/
+	//cout << lenStr("st") << endl;
+
+
 	// 26/06/2026 -- Lesson 13
 
-	int** a = nullptr;
+	/*int** a = nullptr;
 	int row_a = 4, col_a = 2;
 	createArray(a, row_a, col_a);
 	setArray(a);
+	SetColor(Red, White);
 	printArray(a);
 
 	int** b = nullptr;
 	int row_b = 2, col_b = 3;
 	createArray(b, row_b, col_b);
 	setArray(b);
+	SetColor(Blue, White);
 	printArray(b);
 
-	int** c = multiplyMatrix(a, b, row_a, col_b);
+	int** c = multiplyMatrix(a, b);
+	SetColor(Green, White);
+	printArray(c);
+	SetColor(Black, White);*/
 
 	/*int n;
 	cin >> n;

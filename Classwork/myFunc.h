@@ -166,66 +166,196 @@ void deleteArray(T**& arr)
 	arr = nullptr;
 }
 
-int getDevisorCount(int n)
+int mystrcmp(const char* str1, const char* str2)
 {
-	int k = 0;
-	for (size_t i = 2; i < n; i++)
+	int len1 = strlen(str1);
+	int answ = 0;
+	int count1 = 0;
+	int count2 = 0;
+	for (int i = 0; i <= len1; i++)
 	{
-		if (n % i == 0)
+		if (str1[i] != str2[i])
 		{
-			k++;
-		}
-	}
-
-	return k;
-}
-
-void getDevisors(int*& arr, int num, int a)
-{
-	int* devisors = new int[a];
-	int ind = 0;
-	for (int n = num - 1; n >= 2; n--)
-	{
-		if (num % n == 0)
-		{
-			devisors[ind++] = num / n;
-		}
-	}
-	delete[] arr;
-	arr = devisors;
-}
-
-int*** set3DArray(int* p)
-{
-	int num = _msize(p) / sizeof(int);
-	int a = getDevisorCount(num);
-	int*** arr = new int** [a];
-	int* rowsArray = new int[a];
-	getDevisors(rowsArray, num, a);
-
-	for (int k = 0; k < a; k++)
-	{
-		int row = rowsArray[k];
-		int col = num / row;
-		createArray(arr[k], row, col);
-		for (int i = 0; i < row; i++)
-		{
-			for (int j = 0; j < col; j++)
+			count1 += str1[i];
+			count2 += str2[i];
+			/*if (str1[i] < str2[i])
 			{
-				arr[k][i][j] = p[j + (i * col)];
+				answ = 1;
 			}
+			else
+			{
+				answ = -1;
+			}*/
 		}
 	}
 
-	return arr;
+	if (count1 > count2)
+	{
+		answ = 1;
+	}
+	else
+	{
+		answ = -1;
+	}
+
+	return answ;
 }
 
-int** multiplyMatrix(int** a, int** b, int row, int col)
-{
-	int** c = nullptr;
-	createArray(c, row, col);
+//template<class T>
+//int countValueArray(T* arr, int size, const T& value)
+//{
+//	int countValue = 0;
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		if (arr[i] == value)
+//		{
+//			countValue++;
+//		}
+//	}
+//
+//	return countValue;
+//}
 
-}
+//char* removeSymbol(char* str, char symb)
+//{
+//	int size = strlen(str);
+//	int len = countValueArray(str, size, symb);
+//	char* temp = new char[size - len + 1];
+//	int k = 0;
+//	for (int i = 0; i < size; i++)
+//	{
+//		if (str[i] != symb)
+//		{
+//			temp[k++] = str[i];
+//		}
+//	}
+//	temp[size - len] = '\0';
+//
+//	return temp;
+//}
+
+//bool isPalindrome(const char* str)
+//{
+//	int size = strlen(str);
+//	for (int i = 0; i < size/2; i++)
+//	{
+//		if (str[i] != str[size - i - 1])
+//		{
+//			return false;
+//		}
+//	}
+//
+//	return true;
+//}
+
+//int countWords(const char* str)
+//{
+//	int size = strlen(str);
+//	int count = 0;
+//	for (int i = 0; i < size; i++)
+//	{
+//		if !!! ((isalnum(str[i]) || ispunct(str[i])) && (str[i+1] == ' ' || str[i+1] == '\0' || ispunct(str[i + 1])))
+//		{
+//			count += 1;
+//		}
+//	}
+//
+//	return count;
+//}
+
+//int lenStr(const char* str)
+//{
+//	int i = 0;
+//	while (str[i] != '\0')
+//	{
+//		i++;
+//	}
+//
+//	return i;
+//}
+
+//int getDevisorCount(int n)
+//{
+//	int k = 0;
+//	for (size_t i = 2; i < n; i++)
+//	{
+//		if (n % i == 0)
+//		{
+//			k++;
+//		}
+//	}
+//
+//	return k;
+//}
+
+//void getDevisors(int*& arr, int num, int a)
+//{
+//	int* devisors = new int[a];
+//	int ind = 0;
+//	for (int n = num - 1; n >= 2; n--)
+//	{
+//		if (num % n == 0)
+//		{
+//			devisors[ind++] = num / n;
+//		}
+//	}
+//	delete[] arr;
+//	arr = devisors;
+//}
+
+//int*** set3DArray(int* p)
+//{
+//	int num = _msize(p) / sizeof(int);
+//	int a = getDevisorCount(num);
+//	int*** arr = new int** [a];
+//	int* rowsArray = new int[a];
+//	getDevisors(rowsArray, num, a);
+//
+//	for (int k = 0; k < a; k++)
+//	{
+//		int row = rowsArray[k];
+//		int col = num / row;
+//		createArray(arr[k], row, col);
+//		for (int i = 0; i < row; i++)
+//		{
+//			for (int j = 0; j < col; j++)
+//			{
+//				arr[k][i][j] = p[j + (i * col)];
+//			}
+//		}
+//	}
+//
+//	return arr;
+//}
+
+//int** multiplyMatrix(int** a, int** b)
+//{
+//	int col = _msize(*a) / sizeof(int);
+//	int row = _msize(b) / sizeof(int*);
+//	if (col != row)
+//	{
+//		return nullptr;
+//	}
+//
+//	int j = col;
+//	row = _msize(a) / sizeof(int*);
+//	col = _msize(*b) / sizeof(int);
+//	int** c = nullptr;
+//	createArray(c, row, col);
+//	for (int m = 0; m < row; m++)
+//	{
+//		for (int p = 0; p < col; p++)
+//		{
+//			c[m][p] = 0;
+//			for (int n = 0; n < j; n++)
+//			{
+//				c[m][p] += a[m][n] * b[n][p];
+//			}
+//		}
+//	}
+//
+//	return c;
+//}
 
 //template<class T>
 //void addRowArray(T**& arr, int& row, int col)
@@ -679,20 +809,6 @@ void addColArray(T**& arr, int row, int& col, int ind, T* newCol = nullptr)
 //}
 //
 //
-//template<class T>
-//int countValueArray(T* arr, int size, T& value)
-//{
-//	int countValue = 0;
-//	for (size_t i = 0; i < size; i++)
-//	{
-//		if (arr[i] == value)
-//		{
-//			countValue++;
-//		}
-//	}
-//
-//	return countValue;
-//}
 //
 //template<class T>
 //T sumValueArray(T* arr, int size)
