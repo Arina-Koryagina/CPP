@@ -120,6 +120,15 @@ void printArray(T** arr)
 	cout << endl;
 }
 
+void printArray(char** arr)
+{
+	int lines = _msize(arr) / sizeof(char*);
+	for (int i = 0; i < lines; i++)
+	{
+		cout << arr[i] << endl;
+	}
+}
+
 template<class T>
 void printArray(T*** arr)
 {
@@ -166,40 +175,124 @@ void deleteArray(T**& arr)
 	arr = nullptr;
 }
 
-int mystrcmp(const char* str1, const char* str2)
+template<class T>
+bool asc(const T& a, const T& b)
 {
-	int len1 = strlen(str1);
-	int answ = 0;
-	int count1 = 0;
-	int count2 = 0;
-	for (int i = 0; i <= len1; i++)
+	return a > b;
+}
+
+template<class T>
+bool dec(const T& a, const T& b)
+{
+	return a < b;
+}
+
+bool compareString(char* const& s1, char* const& s2)
+{
+	return strcmp(s1, s2) > 0;
+}
+
+template<class T>
+void bubbleSort(T* arr, int size, bool(*method)(const T&, const T&) = asc)
+{
+	for (size_t j = 0; j < size - 1; j++)
 	{
-		if (str1[i] != str2[i])
+		for (size_t i = 0; i < size - 1 - j; i++)
 		{
-			count1 += str1[i];
-			count2 += str2[i];
-			/*if (str1[i] < str2[i])
+			if (method(arr[i], arr[i + 1]))
 			{
-				answ = 1;
+				swap(arr[i], arr[i + 1]);
 			}
-			else
-			{
-				answ = -1;
-			}*/
 		}
 	}
-
-	if (count1 > count2)
-	{
-		answ = 1;
-	}
-	else
-	{
-		answ = -1;
-	}
-
-	return answ;
 }
+
+char* deleteSubString(const char* str, const char* wrd)
+{
+	const char* p;
+	int word = strlen(wrd);
+	char* newStr = new char[strlen(str) + 1];
+	newStr[0] = '\0';
+	while ((p = strstr(str, wrd)) != nullptr)
+	{
+		strncat(newStr, str, p - str);
+		str = word + p;
+	}
+
+	strcat(newStr, str);
+	return newStr;
+}
+
+int getNewLength(const char* str, const char* _old, const char* _new, int oldWord)
+{
+	const char* p;
+	int wordCount = 0;
+	const char* temp = str;
+	while ((p = strstr(temp, _old)) != nullptr)
+	{
+		wordCount++;
+		temp = oldWord + p;
+	}
+	int newWord = strlen(_new);
+	
+	return strlen(str) - wordCount * oldWord + wordCount * newWord;
+}
+
+char* replaceWord(const char* str, const char* _old, const char* _new)
+{
+	const char* p;
+	int oldWord = strlen(_old);
+	int len = getNewLength(str, _old, _new, oldWord);
+
+	char* newStr = new char[len + 1];
+	newStr[0] = '\0';
+	while ((p = strstr(str, _old)) != nullptr)
+	{
+		strncat(newStr, str, p - str);
+		strcat(newStr, _new);
+		str = oldWord + p;
+	}
+
+	strcat(newStr, str);
+	return newStr;
+}
+
+
+
+//int mystrcmp(const char* str1, const char* str2)
+//{
+//	int len1 = strlen(str1);
+//	int answ = 0;
+//	int count1 = 0;
+//	int count2 = 0;
+//	for (int i = 0; i <= len1; i++)
+//	{
+//		if (str1[i] != str2[i])
+//		{
+//			count1 += str1[i];
+//			count2 += str2[i];
+//			/*if (str1[i] < str2[i])
+//			{
+//				answ = 1;
+//			}
+//			else
+//			{
+//				answ = -1;
+//			}*/
+//		}
+//	}
+//
+//	if (count1 > count2)
+//	{
+//		answ = 1;
+//	}
+//	else
+//	{
+//		answ = -1;
+//	}
+//
+//	return answ;
+//}
 
 //template<class T>
 //int countValueArray(T* arr, int size, const T& value)
@@ -506,34 +599,6 @@ void addColArray(T**& arr, int row, int& col, int ind, T* newCol = nullptr)
 	}
 	col++;
 }
-
-
-//template<class T>
-//bool asc(const T& a, const T& b)
-//{
-//	return a > b;
-//}
-//
-//template<class T>
-//bool dec(const T& a, const T& b)
-//{
-//	return a < b;
-//}
-//
-//template<class T>
-//void bubbleSort(T* arr, int size, bool(*method)(const T&, const T&) = asc)
-//{
-//	for (size_t j = 0; j < size - 1; j++)
-//	{
-//		for (size_t i = 0; i < size - 1 - j; i++)
-//		{
-//			if (method(arr[i], arr[i + 1]))
-//			{
-//				swap(arr[i], arr[i + 1]);
-//			}
-//		}
-//	}
-//}
 //
 //template<class T>
 //T maxValueArray(T* arr, int size)

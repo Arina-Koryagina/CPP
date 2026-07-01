@@ -5,6 +5,7 @@
 #include<conio.h>
 
 #include"myFunc.h"
+#include"myStruct.h"
 
 using namespace std;
 
@@ -19,6 +20,73 @@ int main()
 	system("cls");
 	srand(time(0));
 	
+	// 01/07/2026 -- Lesson 15
+	
+	const int n = 5;
+	Point points[n];
+	int minValue = -5, maxValue = 5;
+	for (int i = 0; i < n; i++)
+	{
+		points[i].name = 'A' + i;
+		points[i].x = rand() % (maxValue - minValue + 1) + minValue;
+		points[i].y = rand() % (maxValue - minValue + 1) + minValue;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		printPoint(points[i]);
+	}
+
+	//Date d = { 1, 7, 2026 };
+	//printDate(d);
+
+	//Human h = { new char[] {"name"}, {2, 7, 2010} };
+	//h.bd.day = 24;
+
+	/*Point p;
+	p.name = 'A';
+	p.x = 10;
+	p.y = 12;
+
+	Point p1 = { 'B', 13, 5 };
+
+	Point p2[4];
+
+	printPoint(p);
+	printPoint(p1);*/
+
+	/*char buffer[1024];
+	cout << "Enter a line: ";
+	cin.getline(buffer, 1024);
+	int len = strlen(buffer);
+	char* str = new char[len + 1];
+	strcpy(str, buffer);*/
+
+	//cout << "Enter a word to delete: ";
+	/*cout << "Enter a word to replace: ";
+	cin.getline(buffer, 1024);
+	len = strlen(buffer);
+	char* wrd = new char[len + 1];
+	strcpy(wrd, buffer);*/
+
+	//str = deleteSubString(str, wrd);
+	//str = replaceWord(str, wrd, "***");
+	//char* str = replaceWord("C++ PHP HTML C++ Python", "C++", "*****");
+
+	//cout << str << endl;
+
+	/*int size = 5;
+	char** surnames = new char*[size];
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter a surname: ";
+		cin.getline(buffer, 1024);
+		int len = strlen(buffer);
+		surnames[i] = new char[len + 1];
+		strcpy(surnames[i], buffer);
+	}
+	bubbleSort(surnames, size, compareString);
+	printArray(surnames);*/
+
 	// 29/06/2026 -- Lesson 14
 
 	/*char buffer[1024];
@@ -29,14 +97,14 @@ int main()
 	
 	//cout << countWords(str) << endl;
 	//cout << isPalindrome(str) << endl;
-	cout << mystrcmp("bcaAaaaAabnn", "bbaaABa123") << endl;
-	cout << strcmp("bcaAaaaAabnn", "bbaaABa123") << endl;
+	/*cout << mystrcmp("bcaAaaaAabnn", "bbaaABa123") << endl;
+	cout << strcmp("bcaAaaaAabnn", "bbaaABa123") << endl;*/
 	
 	//cout << str << endl;
 
-	//char st1[80], st2[80];
-	//cout << "1: "; cin.getline(st1, 80);
-	//cout << "2: "; cin.getline(st2, 80);
+	/*char st1[80], st2[80];
+	cout << "1: "; cin.getline(st1, 80);
+	cout << "2: "; cin.getline(st2, 80);*/
 
 	//strcpy(st1, st2);
 	//strncpy_s(st1, 80, st2, 3);
@@ -75,8 +143,8 @@ int main()
 	cout << isupper('1') << endl;
 	cout << islower('1') << endl;*/
 
-	//cout << "1: " << st1 << endl;
-	//cout << "2: " << st2 << endl;
+	/*cout << "1: " << st1 << endl;
+	cout << "2: " << st2 << endl;*/
 
 
 	//char buffer[1024];

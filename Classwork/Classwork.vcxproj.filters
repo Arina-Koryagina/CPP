@@ -23,5 +23,8 @@
     <ClInclude Include="myFunc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="myStruct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
