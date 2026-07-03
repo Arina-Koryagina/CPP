@@ -20,11 +20,32 @@ int main()
 	system("cls");
 	srand(time(0));
 	
+	// 03/07/2026 -- Lesson 16
+
+	//Point p;
+	//p.print();
+	//Auto car;
+	//car.move();
+
+	//Phonebook contacts;
+	//contacts.menu();
+
+	//int a;
+	//cin >> a;
+	////cin.get();
+	//cin.ignore();
+	//char name[50];
+	//cin.getline(name, 50);
+
+	//cout << a << endl;
+	//cout << name << endl;
+
+
 	// 01/07/2026 -- Lesson 15
 	
-	const int n = 5;
+	/*const int n = 5;
 	Point points[n];
-	int minValue = -5, maxValue = 5;
+	int minValue = -5, maxValue = 20;
 	for (int i = 0; i < n; i++)
 	{
 		points[i].name = 'A' + i;
@@ -35,6 +56,26 @@ int main()
 	{
 		printPoint(points[i]);
 	}
+
+	int ind[2] = { 0, 1 };
+	double dist = getLen(points[0], points[1]);
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			double len = getLen(points[i], points[j]);
+			if (len > dist)
+			{
+				dist = len;
+				ind[0] = i;
+				ind[1] = j;
+			}
+		}
+	}
+
+	cout << "Longest distance: " << dist << endl;
+	printPoint(points[ind[0]]);
+	printPoint(points[ind[1]]);*/
 
 	//Date d = { 1, 7, 2026 };
 	//printDate(d);

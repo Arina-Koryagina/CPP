@@ -27,16 +27,26 @@ void starLine(int size = 10, char symbol = '*')
 template<class T>
 void setArray(T* arr, int size, int minValue = 0, int maxValue = 9)
 {
-	for (size_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		arr[i] = rand() % (maxValue - minValue + 1) + minValue;
 	}
 }
 
 template<class T>
+void copyList(T& _old, T _new, int size)
+{
+	for (int i = 0; i < size * 2; i++)
+	{
+		_new[i] = _old[i];
+	}
+	_old = _new;
+}
+
+template<class T>
 void printArray(T* arr, int size)
 {
-	for (size_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		cout << arr[i] << " ";
 	}
@@ -47,7 +57,7 @@ template<class T>
 void printArray(T* arr)
 {
 	int size = _msize(arr) / sizeof(T);
-	for (size_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		cout << arr[i] << " ";
 	}
@@ -58,7 +68,7 @@ template<class T>
 void createArray(T**& arr, int row, int col)
 {
 	arr = new T* [row];
-	for (size_t i = 0; i < row; i++)
+	for (int i = 0; i < row; i++)
 	{
 		arr[i] = new T[col];
 	}
@@ -67,9 +77,9 @@ void createArray(T**& arr, int row, int col)
 template<class T>
 void setArray(T** arr, int row, int col, int minValue = 0, int maxValue = 9)
 {
-	for (size_t i = 0; i < row; i++)
+	for (int i = 0; i < row; i++)
 	{
-		for (size_t j = 0; j < col; j++)
+		for (int j = 0; j < col; j++)
 		{
 			arr[i][j] = rand() % (maxValue - minValue + 1) + minValue;
 		}
@@ -81,9 +91,9 @@ void setArray(T** arr, int minValue = 0, int maxValue = 9)
 {
 	int row = _msize(arr) / sizeof(T*);
 	int col = _msize(*arr) / sizeof(T);
-	for (size_t i = 0; i < row; i++)
+	for (int i = 0; i < row; i++)
 	{
-		for (size_t j = 0; j < col; j++)
+		for (int j = 0; j < col; j++)
 		{
 			arr[i][j] = rand() % (maxValue - minValue + 1) + minValue;
 		}
@@ -93,9 +103,9 @@ void setArray(T** arr, int minValue = 0, int maxValue = 9)
 template<class T>
 void printArray(T** arr, int row, int col)
 {
-	for (size_t i = 0; i < row; i++)
+	for (int i = 0; i < row; i++)
 	{
-		for (size_t j = 0; j < col; j++)
+		for (int j = 0; j < col; j++)
 		{
 			cout << arr[i][j] << " ";
 		}
@@ -109,9 +119,9 @@ void printArray(T** arr)
 {
 	int row = _msize(arr) / sizeof(T*);
 	int col = _msize(*arr) / sizeof(T);
-	for (size_t i = 0; i < row; i++)
+	for (int i = 0; i < row; i++)
 	{
-		for (size_t j = 0; j < col; j++)
+		for (int j = 0; j < col; j++)
 		{
 			cout << arr[i][j] << " ";
 		}
@@ -154,7 +164,7 @@ void printArray(T*** arr)
 template<class T>
 void deleteArray(T**& arr, int size)
 {
-	for (size_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		delete[] arr[i];
 	}
@@ -167,7 +177,7 @@ void deleteArray(T**& arr)
 {
 	int block = _msize(arr);
 	int size = block / sizeof(T*);
-	for (size_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		delete[] arr[i];
 	}
@@ -195,9 +205,9 @@ bool compareString(char* const& s1, char* const& s2)
 template<class T>
 void bubbleSort(T* arr, int size, bool(*method)(const T&, const T&) = asc)
 {
-	for (size_t j = 0; j < size - 1; j++)
+	for (int j = 0; j < size - 1; j++)
 	{
-		for (size_t i = 0; i < size - 1 - j; i++)
+		for (int i = 0; i < size - 1 - j; i++)
 		{
 			if (method(arr[i], arr[i + 1]))
 			{
@@ -207,55 +217,89 @@ void bubbleSort(T* arr, int size, bool(*method)(const T&, const T&) = asc)
 	}
 }
 
-char* deleteSubString(const char* str, const char* wrd)
+template<class T>
+bool equals(const T& a, const T& b)
 {
-	const char* p;
-	int word = strlen(wrd);
-	char* newStr = new char[strlen(str) + 1];
-	newStr[0] = '\0';
-	while ((p = strstr(str, wrd)) != nullptr)
-	{
-		strncat(newStr, str, p - str);
-		str = word + p;
-	}
-
-	strcat(newStr, str);
-	return newStr;
+	return a == b;
 }
 
-int getNewLength(const char* str, const char* _old, const char* _new, int oldWord)
+template<class T>
+int findValue(T* arr, int size, const T& value, bool(*method)(const T&, const T&) = equals)
 {
-	const char* p;
-	int wordCount = 0;
-	const char* temp = str;
-	while ((p = strstr(temp, _old)) != nullptr)
+	for (int i = 0; i < size; i++)
 	{
-		wordCount++;
-		temp = oldWord + p;
-	}
-	int newWord = strlen(_new);
-	
-	return strlen(str) - wordCount * oldWord + wordCount * newWord;
-}
-
-char* replaceWord(const char* str, const char* _old, const char* _new)
-{
-	const char* p;
-	int oldWord = strlen(_old);
-	int len = getNewLength(str, _old, _new, oldWord);
-
-	char* newStr = new char[len + 1];
-	newStr[0] = '\0';
-	while ((p = strstr(str, _old)) != nullptr)
-	{
-		strncat(newStr, str, p - str);
-		strcat(newStr, _new);
-		str = oldWord + p;
+		if (comparer(arr[i], value))
+		{
+			return i;
+		}
 	}
 
-	strcat(newStr, str);
-	return newStr;
+	return -1;
 }
+
+template<class T>
+void addValueArray(T*& arr, int& size, T value)
+{
+	T* temp = new T[size + 1];
+	for (size_t i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[size] = value;
+	delete[] arr;
+	size++;
+	arr = temp;
+}
+
+//char* deleteSubString(const char* str, const char* wrd)
+//{
+//	const char* p;
+//	int word = strlen(wrd);
+//	char* newStr = new char[strlen(str) + 1];
+//	newStr[0] = '\0';
+//	while ((p = strstr(str, wrd)) != nullptr)
+//	{
+//		strncat(newStr, str, p - str);
+//		str = word + p;
+//	}
+//
+//	strcat(newStr, str);
+//	return newStr;
+//}
+//
+//int getNewLength(const char* str, const char* _old, const char* _new, int oldWord)
+//{
+//	const char* p;
+//	int wordCount = 0;
+//	const char* temp = str;
+//	while ((p = strstr(temp, _old)) != nullptr)
+//	{
+//		wordCount++;
+//		temp = oldWord + p;
+//	}
+//	int newWord = strlen(_new);
+//	
+//	return strlen(str) - wordCount * oldWord + wordCount * newWord;
+//}
+//
+//char* replaceWord(const char* str, const char* _old, const char* _new)
+//{
+//	const char* p;
+//	int oldWord = strlen(_old);
+//	int len = getNewLength(str, _old, _new, oldWord);
+//
+//	char* newStr = new char[len + 1];
+//	newStr[0] = '\0';
+//	while ((p = strstr(str, _old)) != nullptr)
+//	{
+//		strncat(newStr, str, p - str);
+//		strcat(newStr, _new);
+//		str = oldWord + p;
+//	}
+//
+//	strcat(newStr, str);
+//	return newStr;
+//}
 
 
 
@@ -468,137 +512,104 @@ char* replaceWord(const char* str, const char* _old, const char* _new)
 //	arr = temp;
 //}
 
-template<class T>
-void addEndRowArray(T**& arr, int& row, int col, T* newRow = nullptr)
-{
-	T** temp = new T*[row + 1];
-	for (size_t i = 0; i < row; i++)
-	{
-		temp[i] = arr[i];
-	}
-	temp[row] = new T[col];
-	for (size_t i = 0; i < col; i++)
-	{
-		temp[row][i] = (newRow != nullptr) ? newRow[i] : 0;
-	}
-	//deleteArray(arr);
-	delete[] arr;
-	row++;
-	arr = temp;
-}
-
-template<class T>
-void addStartRowArray(T**& arr, int& row, int col, T* newRow = nullptr)
-{
-	T** temp = new T * [row + 1];
-	temp[0] = new T[col];
-	for (size_t i = 0; i < col; i++)
-	{
-		temp[0][i] = (newRow != nullptr) ? newRow[i] : 0;
-	}
-	for (size_t i = 0; i < row; i++)
-	{
-		temp[i+1] = arr[i];
-	}
-	delete[] arr;
-	row++;
-	arr = temp;
-}
-
-template<class T>
-void addRowArray(T**& arr, int& row, int col, int ind, T* newRow = nullptr)
-{
-	T** temp = new T * [row + 1];
-	for (size_t i = 0; i < ind; i++)
-	{
-		temp[i] = arr[i]; 
-	}
-	temp[ind] = new T[col];
-	for (size_t i = 0; i < col; i++)
-	{
-		temp[ind][i] = (newRow != nullptr) ? newRow[i] : 0;
-	}
-	for (size_t i = ind; i < row; i++)
-	{
-		temp[i+1] = arr[i];
-	}
-	delete[] arr;
-	row++;
-	arr = temp;
-}
-
-template<class T>
-void delRowArray(T**& arr, int& row, int col, int ind)
-{
-	T** temp = new T * [row - 1];
-	for (size_t i = 0; i < ind; i++)
-	{
-		temp[i] = arr[i]; 
-	}
-	for (size_t i = ind; i < row; i++)
-	{
-		temp[i] = arr[i+1];
-	}
-	delete[] arr;
-	row--;
-	arr = temp;
-}
-
-template<class T>
-int findValue(T* arr, int size, T value)
-{
-	for (int i = 0; i < size; i++)
-	{
-		if (arr[i] == value)
-		{
-			return i;
-		}
-	}
-
-	return -1;
-}
-
-template<class T>
-void adjustArray(T**& arr, int& row, int col)
-{
-	for (size_t i = 0; i < row; i++)
-	{
-		if (findValue(arr[i], col, 0) != -1)
-		{
-			delRowArray(arr, row, col, i);
-		}
-	}
-}
-
-template<class T>
-T* addValueArray(T*& arr, int& size, int ind, T value = 0)
-{
-	T* temp = new T[size + 1];
-	for (size_t i = 0; i < ind; i++)
-	{
-		temp[i] = arr[i];
-	}
-	temp[ind] = value;
-	for (size_t i = ind; i < size; i++)
-	{
-		temp[i + 1] = arr[i];
-	}
-	delete[] arr;
-
-	size++;
-	return temp;
-}
-
-template<class T>
-void addColArray(T**& arr, int row, int& col, int ind, T* newCol = nullptr)
-{
-	for (size_t i = 0; i < row; i++)
-	{
-		addValueArray(arr[i], col, ind, newCol[i]);
-		col--;
-	}
-	col++;
-}
+//template<class T>
+//void addEndRowArray(T**& arr, int& row, int col, T* newRow = nullptr)
+//{
+//	T** temp = new T*[row + 1];
+//	for (size_t i = 0; i < row; i++)
+//	{
+//		temp[i] = arr[i];
+//	}
+//	temp[row] = new T[col];
+//	for (size_t i = 0; i < col; i++)
+//	{
+//		temp[row][i] = (newRow != nullptr) ? newRow[i] : 0;
+//	}
+//	//deleteArray(arr);
+//	delete[] arr;
+//	row++;
+//	arr = temp;
+//}
+//
+//template<class T>
+//void addStartRowArray(T**& arr, int& row, int col, T* newRow = nullptr)
+//{
+//	T** temp = new T * [row + 1];
+//	temp[0] = new T[col];
+//	for (size_t i = 0; i < col; i++)
+//	{
+//		temp[0][i] = (newRow != nullptr) ? newRow[i] : 0;
+//	}
+//	for (size_t i = 0; i < row; i++)
+//	{
+//		temp[i+1] = arr[i];
+//	}
+//	delete[] arr;
+//	row++;
+//	arr = temp;
+//}
+//
+//template<class T>
+//void addRowArray(T**& arr, int& row, int col, int ind, T* newRow = nullptr)
+//{
+//	T** temp = new T * [row + 1];
+//	for (size_t i = 0; i < ind; i++)
+//	{
+//		temp[i] = arr[i]; 
+//	}
+//	temp[ind] = new T[col];
+//	for (size_t i = 0; i < col; i++)
+//	{
+//		temp[ind][i] = (newRow != nullptr) ? newRow[i] : 0;
+//	}
+//	for (size_t i = ind; i < row; i++)
+//	{
+//		temp[i+1] = arr[i];
+//	}
+//	delete[] arr;
+//	row++;
+//	arr = temp;
+//}
+//
+//template<class T>
+//void delRowArray(T**& arr, int& row, int col, int ind)
+//{
+//	T** temp = new T * [row - 1];
+//	for (size_t i = 0; i < ind; i++)
+//	{
+//		temp[i] = arr[i]; 
+//	}
+//	for (size_t i = ind; i < row; i++)
+//	{
+//		temp[i] = arr[i+1];
+//	}
+//	delete[] arr;
+//	row--;
+//	arr = temp;
+//}
+//
+//template<class T>
+//void adjustArray(T**& arr, int& row, int col)
+//{
+//	for (size_t i = 0; i < row; i++)
+//	{
+//		if (findValue(arr[i], col, 0) != -1)
+//		{
+//			delRowArray(arr, row, col, i);
+//		}
+//	}
+//}
+//
+//template<class T>
+//void addColArray(T**& arr, int row, int& col, int ind, T* newCol = nullptr)
+//{
+//	for (size_t i = 0; i < row; i++)
+//	{
+//		addValueArray(arr[i], col, ind, newCol[i]);
+//		col--;
+//	}
+//	col++;
+//}
 //
 //template<class T>
 //T maxValueArray(T* arr, int size)
