@@ -30,12 +30,12 @@ int main()
 	}
 
 	int ind[2] = {0, 1};
-	double dist = getLen(points[0].x, points[0].y, points[1].x, points[1].y);
+	double dist = getLen(points[0], points[1]);
 	for (int i = 0; i < n - 1; i++)
 	{
 		for (int j = i + 1; j < n; j++)
 		{
-			double len = getLen(points[i].x, points[i].y, points[j].x, points[j].y);
+			double len = getLen(points[i], points[j]);
 			if (len > dist)
 			{
 				dist = len;
@@ -81,10 +81,10 @@ int main()
 
 	int op;
 	do {
-		cout << "0 - Sort (A-Z)\n1 - Sort (Z-A)\n2 - Add contact\n3 - Delete contact\n4 - Exit" << endl;
+		cout << "0 - Sort (A-Z)\n1 - Sort (Z-A)\n2 - Add contact\n3 - Delete contact\n4 - Search by name\n5 - Search by number\n6 - Exit" << endl;
 		cout << "What do you want to do? "; cin >> op;
 		editList(contacts, size, op);
-	} while (op != 4);
+	} while (op != 6);
 
 	
 	return 0;

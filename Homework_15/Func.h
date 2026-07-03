@@ -28,9 +28,11 @@ void printPoint(Point p)
 	cout << p.name << " (" << p.x << "; " << p.y << ")" << endl;
 }
 
-double getLen(int x1, int y1, int x2, int y2)
+double getLen(Point p1, Point p2)
 {
-	return sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+	int x = p2.x - p1.x;
+	int y = p2.y - p1.y;
+	return sqrt(pow(x, 2) + pow(y, 2));
 }
 
 template<class T>
@@ -162,6 +164,26 @@ void printList(void** list, int size)
 	cout << endl;
 }
 
+template<class T>
+bool equals(const T& a, const T& b)
+{
+	return a == b;
+}
+
+template<class T>
+int findValue(T* arr, int size, const T& value, bool(*method)(const T&, const T&) = equals)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (comparer(arr[i], value))
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
 void editList(void**& list, int& size, int op)
 {
 	cout << endl;
@@ -251,6 +273,15 @@ void editList(void**& list, int& size, int op)
 		size--;
 		break;
 	}
+	/*case 4:
+		char* name = new char[50];
+		cout << "Enter the name to search by: "; cin.getline(name, 50);
+		break;
+	case 5:
+		int phone;
+		cout << "Enter the number to search by: "; cin >> phone;
+		findValue(list, size, phone);
+		break;*/
 	default:
 		break;
 	}
