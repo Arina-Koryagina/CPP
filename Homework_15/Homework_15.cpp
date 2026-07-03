@@ -15,40 +15,41 @@ int main()
 	srand(time(0));
 
 	/*-------------------*/
-	//const int n = 5;
-	//Point points[n];
-	//int minValue = -5, maxValue = 20;
-	//for (int i = 0; i < n; i++)
-	//{
-	//	points[i].name = 'A' + i;
-	//	points[i].x = rand() % (maxValue - minValue + 1) + minValue;
-	//	points[i].y = rand() % (maxValue - minValue + 1) + minValue;
-	//}
-	//for (int i = 0; i < n; i++)
-	//{
-	//	printPoint(points[i]);
-	//}
+	const int n = 5;
+	Point points[n];
+	int minValue = -5, maxValue = 20;
+	for (int i = 0; i < n; i++)
+	{
+		points[i].name = 'A' + i;
+		points[i].x = rand() % (maxValue - minValue + 1) + minValue;
+		points[i].y = rand() % (maxValue - minValue + 1) + minValue;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		printPoint(points[i]);
+	}
 
-	//int ind[2] = {0, 1};
-	//double dist = getLen(points[0].x, points[0].y, points[1].x, points[1].y);
-	//for (int i = 0; i < n - 1; i++)
-	//{
-	//	for (int j = i + 1; j < n; j++)
-	//	{
-	//		double len = getLen(points[i].x, points[i].y, points[j].x, points[j].y);
-	//		if (len > dist)
-	//		{
-	//			dist = len;
-	//			ind[0] = i;
-	//			ind[1] = j;
-	//		}
-	//	}
-	//}
-	//
-	//cout << "Longest distance: " << dist << endl;
-	//printPoint(points[ind[0]]);
-	//printPoint(points[ind[1]]);
+	int ind[2] = {0, 1};
+	double dist = getLen(points[0].x, points[0].y, points[1].x, points[1].y);
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			double len = getLen(points[i].x, points[i].y, points[j].x, points[j].y);
+			if (len > dist)
+			{
+				dist = len;
+				ind[0] = i;
+				ind[1] = j;
+			}
+		}
+	}
+	
+	cout << "Longest distance: " << dist << endl;
+	printPoint(points[ind[0]]);
+	printPoint(points[ind[1]]);
 	/*-------------------*/
+
 
 	//  I
 	cout << "\n\tI" << endl;
@@ -56,13 +57,13 @@ int main()
 	// попередньої матриці стають рядками, а рядки — стовпчиками.
 	// Напишіть функцію транспонування матриці.
 
-	//int row = 3, col = 4;
-	//int** arr = nullptr;
-	//createArray(arr, row, col);
-	//setArray(arr);
-	//printArray(arr);
-	//transposeMatrix(arr);
-	//printArray(arr);
+	int row = 3, col = 4;
+	int** arr = nullptr;
+	createArray(arr, row, col);
+	setArray(arr);
+	printArray(arr);
+	transposeMatrix(arr);
+	printArray(arr);
 
 
 	//  II
