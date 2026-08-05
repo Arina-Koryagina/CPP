@@ -139,6 +139,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Func.h" />
     <ClInclude Include="Struct.h" />
   </ItemGroup>
   <ItemGroup>
