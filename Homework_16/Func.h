@@ -98,18 +98,36 @@ void deleteArray(T**& arr)
 	arr = nullptr;
 }
 
-template<class T>
-bool equals(const T& a, const T& b)
+template<class T, class U>
+bool equals(const T& a, const U& b)
 {
 	return a == b;
 }
 
-template<class T>
-int findValue(T* arr, int size, const T& value, bool(*method)(const T&, const T&) = equals)
+template<class T, class U>
+bool compareAuthor(const T& book, const U& author)
+{
+	if (book.author == nullptr)
+		return false;
+
+	return strcmp(book.author, author) == 0;
+}
+
+template<class T, class U>
+bool compareTitle(const T& book, const U& title)
+{
+	if (book.title == nullptr)
+		return false;
+
+	return strcmp(book.title, title) == 0;
+}
+
+template<class T, class U>
+int findValue(T* arr, int size, const U& value, bool(*method)(const T&, const U&) = equals)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (comparer(arr[i], value))
+		if (method(arr[i], value))
 		{
 			return i;
 		}
@@ -130,4 +148,32 @@ void addValueArray(T*& arr, int& size, T value)
 	delete[] arr;
 	size++;
 	arr = temp;
+}
+
+template<class T>
+bool asc(const T& a, const T& b)
+{
+	return strcmp(a, b) > 0;
+}
+
+template<class T>
+bool desc(const T& a, const T& b)
+{
+	return strcmp(a, b) < 0;
+}
+
+template<class T, class U>
+void bubbleSort(T* arr, U* second, int size, bool(*method)(const T&, const T&) = asc)
+{
+	for (int j = 0; j < size - 1; j++)
+	{
+		for (int i = 0; i < size - 1 - j; i++)
+		{
+			if (method(arr[i], arr[i + 1]))
+			{
+				swap(arr[i], arr[i + 1]);
+				swap(second[i], second[i + 1]);
+			}
+		}
+	}
 }

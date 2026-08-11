@@ -7,13 +7,14 @@
 
 using namespace std;
 
+const int LIBRARY_SIZE = 10;
 
 struct Book
 {
-	char* title;
-	char* author;
-	char* publisher;
-	char* genre;
+	char* title = nullptr;
+	char* author = nullptr;
+	char* publisher = nullptr;
+	char* genre = nullptr;
 
 	void input()
 	{
@@ -48,7 +49,7 @@ struct Library
 
 	void menu()
 	{
-		innit();
+		init();
 		while (true)
 		{
 			system("cls");
@@ -82,10 +83,10 @@ struct Library
 		}
 	}
 
-	void innit()
+	void init()
 	{
-		size = 10;
-		books = new Book[10];
+		books = new Book[LIBRARY_SIZE];
+		size = LIBRARY_SIZE;
 		books[0].title = new char[] { "Good Omens" };
 		books[0].author = new char[] { "Terry Pratchett" };
 		books[0].publisher = new char[] { "Corgi" };
@@ -221,11 +222,138 @@ struct Library
 
 	void findBook()
 	{
+		system("cls");
+		cout << "                                              Find a book" << endl;
+		printLine();
+		int choice, found = 0;
+		cout << "1. author\n2. title\nSearch a book by... " << endl;
+		cin >> choice; cin.ignore();
+		char buffer[80];
 
+		system("cls");
+		cout << "                                              Find a book" << endl;
+		printLine();
+		int* bookInds = new int[size];
+		
+		switch (choice)
+		{
+		case 1:
+			cout << "Enter the author    : "; cin.getline(buffer, 80);
+			for (int start = 0; start < size;)
+			{
+				int book = findValue(books + start, size - start, buffer, compareAuthor);
+
+				if (book == -1)
+				{
+					break;
+				}
+
+				book += start;
+				bookInds[found++] = book;
+				start = book + 1;
+			}
+			break;
+		case 2:
+			cout << "Enter the title     : "; cin.getline(buffer, 80);
+			for (int start = 0; start < size;)
+			{
+				int book = findValue(books + start, size - start, buffer, compareTitle);
+
+				if (book == -1)
+				{
+					break;
+				}
+
+				book += start;
+				bookInds[found++] = book;
+				start = book + 1;
+			}
+			break;
+		default:
+			break;
+		}
+		if (found != 0)
+		{
+			cout << "      " << setw(25) << left << "Title" << setw(25) << left << "Author" << setw(25) << left << "Publisher" << setw(15) << left << "Genre" << endl;
+			for (int i = 0; i < found; i++)
+			{
+				cout << setw(4) << right << bookInds[i] + 1 << ". "; books[bookInds[i]].print();
+			}
+		}
+		else
+		{
+			cout << "Book(s) not found!" << endl;
+		}
+
+		delete[] bookInds;
+
+		system("pause");
 	}
 
 	void sortBooks()
 	{
+		system("cls");
+		cout << "                                                Sort books" << endl;
+		printLine();
 
+		int choice, order;
+		cout << "1. Title\n2. Author\n3. Publisher\nSort by... ";
+		cin >> choice; cin.ignore();
+		cout << "\n1. Ascending\n2. Descending\nOrder... ";
+		cin >> order; cin.ignore();
+		char** list = new char* [size];
+		int* indexes = new int[size];
+
+		for (int i = 0; i < size; i++)
+		{
+			indexes[i] = i;
+		}
+
+		switch (choice)
+		{
+		case 1:
+			for (int i = 0; i < size; i++)
+			{
+				list[i] = books[i].title;
+			}
+			break;
+		case 2:
+			for (int i = 0; i < size; i++)
+			{
+				list[i] = books[i].author;
+			}
+			break;
+		case 3:
+			for (int i = 0; i < size; i++)
+			{
+				list[i] = books[i].publisher;
+			}
+			break;
+		default:
+			break;
+		}
+
+		(order == 1) ? bubbleSort(list, indexes, size) : bubbleSort(list, indexes, size, desc);
+
+		Book* temp = new Book[size];
+
+		for (int i = 0; i < size; i++)
+		{
+			temp[i] = books[indexes[i]];
+		}
+		for (int i = 0; i < size; i++)
+		{
+			books[i] = temp[i];
+		}
+
+		delete[] temp;
+		delete[] indexes;
+		delete[] list;
+
+		SetColor(Green, White);
+		cout << "Sorted!" << endl;
+		SetColor(Black, White);
+
+		system("pause");
 	}
 };
