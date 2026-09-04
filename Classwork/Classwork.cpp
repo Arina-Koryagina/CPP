@@ -4,6 +4,8 @@
 #include<iomanip>
 #include<conio.h>
 
+#include<fstream>
+
 #include"myFunc.h"
 #include"myStruct.h"
 
@@ -20,6 +22,136 @@ int main()
 	system("cls");
 	srand(time(0));
 	
+	// 04/09/2026 -- Lesson 17
+
+	ifstream in("file.txt");
+	int a;
+	while(in >> a)
+	{
+		if (a % 2 == 0)
+		{
+			ifstream out("even.txt");
+			out << a << endl;
+			out.close();
+		}
+	}
+	cout << "Done!" << endl;
+
+	//const int size = 5;
+	/*Point p[5];
+	for (int i = 0; i < 5; i++)
+	{
+		p[i].x = rand() % 10;
+		p[i].y = rand() % 10;
+		p[i].name = 'A' + i;
+	}
+
+	ofstream out("points.txt");
+	for (int i = 0; i < 5; i++)
+	{
+		out << p[i].name << " " << p[i].x << " " << p[i].y << endl;
+	}
+	out.close();
+
+	int size;
+	ifstream in("points.txt");
+	in >> size;
+
+	Point* a = new Point[size];
+	for (int i = 0; i < size; i++)
+	{
+		in >> a[i].name;
+		in >> a[i].x;
+		in >> a[i].y;
+	}*/
+
+	/*Point* arr = nullptr;
+	int size = 0;
+	ifstream in("points.txt");
+	if (in.is_open())
+	{
+		Point a;
+		while(in >> a.name >> a.x >> a.y)
+		{
+			addValueArray(arr, size, a);
+		}
+	}
+	else
+	{
+		SetColor(LightRed, Black);
+		cout << "File not found!" << endl;
+		SetColor(White, Black);
+	}*/
+	/*in.close();
+	for (int i = 0; i < size; i++)
+	{
+		a[i].print();
+	}*/
+
+	/*int* arr = nullptr;
+	int size = 0;
+	ifstream in("nums.txt");
+	int a;
+	while(in >> a)
+	{
+		addValueArray(arr, size, a);
+	}
+	printArray(arr, size);*/
+
+	/*const int size = 10;
+	int nums[size];
+	setArray(nums, size);
+
+	ofstream fout;
+	fout.open("nums.txt");
+	for (int i = 0; i < size; i++)
+	{
+		fout << nums[i] << " ";
+	}
+	fout.close();
+	ifstream fin;
+	fin.open("nums.txt");
+	char buffer[80];
+	int arr[size];
+	if (fin.is_open())
+	{
+		for (int i = 0; i < size; i++)
+		{
+			fin >> arr[i];
+		}
+	}
+	else
+	{
+		SetColor(LightRed, Black);
+		cout << "File not found!" << endl;
+		SetColor(White, Black);
+	}
+	fin.close();
+	printArray(arr, size);*/
+	
+	//ofstream fout;
+	//fout.open("file1.txt");
+	//fout << "Hello C++" << endl;
+	//fout.close();
+
+	//ifstream fin;
+	//fin.open("file11.txt");
+	//char buffer[80];
+	//if (fin.is_open())
+	//{
+	//	//fin >> buffer;
+	//	fin.getline(buffer, 80);
+	//	cout << buffer << endl;
+	//}
+	//else
+	//{
+	//	SetColor(LightRed, Black);
+	//	cout << "File not found!" << endl;
+	//	SetColor(White, Black);
+	//}
+	//fin.close();
+
+
 	// 03/07/2026 -- Lesson 16
 
 	//Point p;
