@@ -1,0 +1,5 @@
+Symbols: 273
+Lines: 3
+Vowels: 78
+Consonants: 125
+Numbers: 0
