@@ -24,7 +24,7 @@ int main()
 	
 	// 04/09/2026 -- Lesson 17
 
-	ifstream in("file.txt");
+	/*ifstream in("file.txt");
 	int a;
 	while(in >> a)
 	{
@@ -35,7 +35,7 @@ int main()
 			out.close();
 		}
 	}
-	cout << "Done!" << endl;
+	cout << "Done!" << endl;*/
 
 	//const int size = 5;
 	/*Point p[5];
