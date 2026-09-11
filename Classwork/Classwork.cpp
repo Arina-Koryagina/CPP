@@ -22,6 +22,11 @@ int main()
 	system("cls");
 	srand(time(0));
 	
+	// 11/09/2026 -- Lesson 19
+
+	// Object oriented programming
+
+
 	// 07/09/2026 -- Lesson 18
 
 	//Human G = { new char[] {"Gerard Way"}, 49};
