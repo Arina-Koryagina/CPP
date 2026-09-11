@@ -22,6 +22,65 @@ int main()
 	system("cls");
 	srand(time(0));
 	
+	// 07/09/2026 -- Lesson 18
+
+	//Human G = { new char[] {"Gerard Way"}, 49};
+
+	//ofstream out("human.bin", ios::binary);
+	//out.write((char*)&G, sizeof(Human));
+	//int len = strlen(G.name) + 1;
+	//out.write((char*)&len, sizeof(int));
+	//out.write(G.name, len);
+
+	//Human a;
+	//ifstream in("human.bin", ios::binary);
+	//in.read((char*)&a, sizeof(Human));
+	//int len;
+	//in.read((char*)&len, sizeof(int));
+
+	//a.name = new char[len];
+	//in.read(a.name, len);
+
+	//cout << a.name << endl;
+	//cout << a.age << endl;
+
+
+	//ofstream out("points.bin");
+	//Point p[5];
+	//for (int i = 0; i < 5; i++)
+	//{
+	//	p[i].x = rand() % 10;
+	//	p[i].y = rand() % 10;
+	//	p[i].name = 'A' + i;
+	//
+	//	p[i].print();
+
+	//	out.write((char*)&p[i], sizeof(p[i]));
+	//}
+	//out.close();
+
+	/*Point* p = nullptr;
+	int size = 0;
+	ifstream in("points.bin", ios::binary);
+	Point a;
+	while (in.read((char*)&a, sizeof(Point)))
+	{
+		addValueArray(p, size, a);
+		a.print();
+	}*/
+
+
+	//int arr[] = { 1, 2, 3, 4, 5 };
+	//ofstream out("file.bin", ios::binary);
+	//for (size_t i = 0; i < 5; i++)
+	//{
+	//	out.write((char*)&arr[i], sizeof(int));
+	//}
+	
+	//ofstream out("file2.bin", ios::binary);
+	//out.write("Hello C++", 10);
+
+
 	// 04/09/2026 -- Lesson 17
 
 	/*ifstream in("file.txt");
@@ -38,22 +97,25 @@ int main()
 	cout << "Done!" << endl;*/
 
 	//const int size = 5;
-	/*Point p[5];
-	for (int i = 0; i < 5; i++)
-	{
-		p[i].x = rand() % 10;
-		p[i].y = rand() % 10;
-		p[i].name = 'A' + i;
-	}
+	//Point p[5];
+	//for (int i = 0; i < 5; i++)
+	//{
+	//	p[i].x = rand() % 10;
+	//	p[i].y = rand() % 10;
+	//	p[i].name = 'A' + i;
+	//}
 
-	ofstream out("points.txt");
-	for (int i = 0; i < 5; i++)
-	{
-		out << p[i].name << " " << p[i].x << " " << p[i].y << endl;
-	}
-	out.close();
+	//ofstream out("points.txt");
+	//out << 5 << endl;
+	//for (int i = 0; i < 5; i++)
+	//{
+	//	out << p[i].name << " " << p[i].x << " " << p[i].y << endl;
+	//	p[i].print();
+	//}
+	//out.close();
+	//cout << "Done" << endl;
 
-	int size;
+	/*int size;
 	ifstream in("points.txt");
 	in >> size;
 

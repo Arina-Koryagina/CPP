@@ -50,7 +50,12 @@ double getLen(Point p1, Point p2)
 struct Human
 {
 	char* name;
-	Date bd;
+	int age;
+
+	void print()
+	{
+		cout << name << " is " << age << " y.o." << endl;
+	}
 };
 
 struct Engine
